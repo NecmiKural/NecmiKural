@@ -28,7 +28,7 @@ show = true
 [[link]]
 label = "Hugging Face"
 url = "https://huggingface.co/necmikural"
-show = false
+show = true
 
 [[link]]
 label = "Website"
@@ -64,6 +64,8 @@ synthetic_data = true
 results = "README.md"
 visual = { src = "docs/demo.svg", alt = "Terminal replay of make demo: 40 committed bank lines through the rules pass, the agent and the shadow policy, each proposal left for a person to review" }
 extra = [{ label = "Code-mode experiment", url = "docs/code-mode-experiment.md" }]
+demo = "https://huggingface.co/spaces/necmikural/recon-replay"
+demo_note = "replay viewer: recorded runs, synthetic data, no key"
 
   [[project.claim]]
   lead = "With deepseek-flash:"

@@ -8,7 +8,7 @@
 **Necmi Kural.** Software engineer. I build tool-calling agents and retrieval systems, and measure them with evaluations that replay from recorded runs.<br>
 Postgraduate Diploma in Computer Science, University of Waikato, 2026 (completes 8 November 2026). Based in Aotearoa. Full-time work rights in New Zealand; no sponsorship needed.
 
-[LinkedIn](https://www.linkedin.com/in/necmikural/)
+[LinkedIn](https://www.linkedin.com/in/necmikural/) · [Hugging Face](https://huggingface.co/necmikural)
 
 <sub>Numbers below are quoted word for word from each project's README at the linked tag or commit; CI checks weekly that they are still there.</sub>
 
@@ -25,7 +25,7 @@ A rules-first tool-calling agent that matches small-business bank lines to invoi
 
 <a href="https://github.com/NecmiKural/bank-reconciliation-agent"><img src="https://raw.githubusercontent.com/NecmiKural/bank-reconciliation-agent/v1.1.0/docs/demo.svg" width="640" alt="Terminal replay of make demo: 40 committed bank lines through the rules pass, the agent and the shadow policy, each proposal left for a person to review"></a>
 
-[Release v1.1.0](https://github.com/NecmiKural/bank-reconciliation-agent/releases/tag/v1.1.0) · [Results at v1.1.0](https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/README.md) · [Code-mode experiment](https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/docs/code-mode-experiment.md)
+[Release v1.1.0](https://github.com/NecmiKural/bank-reconciliation-agent/releases/tag/v1.1.0) · [Results at v1.1.0](https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/README.md) · [Code-mode experiment](https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/docs/code-mode-experiment.md) · [Demo](https://huggingface.co/spaces/necmikural/recon-replay) (replay viewer: recorded runs, synthetic data, no key)
 
 ### [Provenance-Tiered RAG](https://github.com/NecmiKural/provenance-tiered-rag)
 <sub>Personal project · v0.3.0 · Python, PostgreSQL, pgvector</sub>

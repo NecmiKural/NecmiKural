@@ -17,6 +17,10 @@
     {
       "label": "LinkedIn",
       "url": "https://www.linkedin.com/in/necmikural/"
+    },
+    {
+      "label": "Hugging Face",
+      "url": "https://huggingface.co/necmikural"
     }
   ],
   "projects": [
@@ -48,7 +52,7 @@
         "release": "https://github.com/NecmiKural/bank-reconciliation-agent/releases/tag/v1.1.0",
         "results": "https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/README.md",
         "visual": "https://raw.githubusercontent.com/NecmiKural/bank-reconciliation-agent/v1.1.0/docs/demo.svg",
-        "demo": null,
+        "demo": "https://huggingface.co/spaces/necmikural/recon-replay",
         "space": null,
         "extra": [
           {
@@ -58,7 +62,7 @@
         ]
       },
       "visual_alt": "Terminal replay of make demo: 40 committed bank lines through the rules pass, the agent and the shadow policy, each proposal left for a person to review",
-      "demo_note": null,
+      "demo_note": "replay viewer: recorded runs, synthetic data, no key",
       "claims": [
         {
           "lead": "With deepseek-flash:",
