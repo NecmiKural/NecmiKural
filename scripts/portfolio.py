@@ -159,6 +159,9 @@ def validate(data: dict) -> list[str]:
         errors.append("schema must be 1")
     need = ("name", "headline", "education", "location", "availability", "provenance")
     errors += [f"profile.{k} missing" for k in need + ("banner_alt",) if k not in data["profile"]]
+    for x in data.get("link", []):
+        if "icon" in x and not (README.parent / x["icon"]).is_file():
+            errors.append(f"link {x['label']}: icon {x['icon']} not found")
     ids = [p.get("id") for p in data["project"]]
     errors += [f"duplicate id {i}" for i in sorted({i for i in ids if ids.count(i) > 1})]
     for p in data["project"]:
@@ -290,7 +293,9 @@ def portfolio_json(data: dict) -> str:
     doc = {
         "schema": data["schema"],
         "profile": data["profile"],
-        "links": [{"label": x["label"], "url": x["url"]} for x in data["link"] if x["show"]],
+        "links": [
+            {k: x[k] for k in ("label", "url", "icon") if k in x} for x in data["link"] if x["show"]
+        ],
         "projects": [project_json(p) for p in shown(data)],
     }
     return json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
@@ -352,8 +357,12 @@ def entry(p: dict) -> str:
 
 def render_readme(data: dict) -> str:
     prof, projects = data["profile"], shown(data)
-    links = SEP.join(
-        f"[{x['label']}]({x['url']})" for x in data["link"] if x["show"] and x["label"] != "GitHub"
+    shown_links = [x for x in data["link"] if x["show"] and x["label"] != "GitHub"]
+    links = " ".join(
+        f'<a href="{attr(x["url"])}"><img src="{attr(x["icon"])}" height="32" alt="{attr(x["label"])}"></a>'
+        if "icon" in x
+        else f"[{x['label']}]({x['url']})"
+        for x in shown_links
     )
     out = [
         (

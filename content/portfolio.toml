@@ -10,7 +10,7 @@ name = "Necmi Kural"
 headline = "Software engineer. I build tool-calling agents and retrieval systems, and measure them with evaluations that replay from recorded runs."
 education = "Postgraduate Diploma in Computer Science, University of Waikato, 2026 (completes 8 November 2026)."
 location = "Based in Aotearoa."
-availability = "Full-time work rights in New Zealand; no sponsorship needed."
+availability = "Full-time work rights in New Zealand."
 provenance = "Numbers below are quoted word for word from each project's README at the linked tag or commit; CI checks weekly that they are still there."
 banner_alt = "Necmi Kural in dot-matrix lettering, beside three cassettes labelled RECON, RAG and MCP"
 
@@ -23,11 +23,13 @@ show = true
 [[link]]
 label = "LinkedIn"
 url = "https://www.linkedin.com/in/necmikural/"
+icon = "assets/icons/linkedin.svg"
 show = true
 
 [[link]]
 label = "Hugging Face"
 url = "https://huggingface.co/necmikural"
+icon = "assets/icons/huggingface.svg"
 show = true
 
 [[link]]
@@ -38,7 +40,8 @@ show = false
 [[link]]
 label = "Kaggle"
 url = "https://www.kaggle.com/necmikural"
-show = false
+icon = "assets/icons/kaggle.svg"
+show = true
 
 [[link]]
 label = "CV (PDF)"

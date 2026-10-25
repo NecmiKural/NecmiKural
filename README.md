@@ -6,9 +6,9 @@
 </picture>
 
 **Necmi Kural.** Software engineer. I build tool-calling agents and retrieval systems, and measure them with evaluations that replay from recorded runs.<br>
-Postgraduate Diploma in Computer Science, University of Waikato, 2026 (completes 8 November 2026). Based in Aotearoa. Full-time work rights in New Zealand; no sponsorship needed.
+Postgraduate Diploma in Computer Science, University of Waikato, 2026 (completes 8 November 2026). Based in Aotearoa. Full-time work rights in New Zealand.
 
-[LinkedIn](https://www.linkedin.com/in/necmikural/) · [Hugging Face](https://huggingface.co/necmikural)
+<a href="https://www.linkedin.com/in/necmikural/"><img src="assets/icons/linkedin.svg" height="32" alt="LinkedIn"></a> <a href="https://huggingface.co/necmikural"><img src="assets/icons/huggingface.svg" height="32" alt="Hugging Face"></a> <a href="https://www.kaggle.com/necmikural"><img src="assets/icons/kaggle.svg" height="32" alt="Kaggle"></a>
 
 <sub>Numbers below are quoted word for word from each project's README at the linked tag or commit; CI checks weekly that they are still there.</sub>
 
