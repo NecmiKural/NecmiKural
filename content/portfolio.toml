@@ -36,6 +36,7 @@ show = true
 [[link]]
 label = "Website"
 url = "https://necmikural.github.io"
+icon = "assets/icons/website.svg"
 show = true
 
 [[link]]

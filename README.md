@@ -8,7 +8,7 @@
 **Necmi Kural.** Software engineer. I build tool-calling agents and retrieval systems, and measure them with evaluations that replay from recorded runs.<br>
 Postgraduate Diploma in Computer Science with Master of AI coursework, University of Waikato, 2026, based in Aotearoa.
 
-<a href="https://www.linkedin.com/in/necmikural/"><img src="assets/icons/linkedin.svg" height="32" alt="LinkedIn"></a> <a href="https://huggingface.co/necmikural"><img src="assets/icons/huggingface.svg" height="32" alt="Hugging Face"></a> [Website](https://necmikural.github.io) <a href="https://www.kaggle.com/necmikural"><img src="assets/icons/kaggle.svg" height="32" alt="Kaggle"></a>
+<a href="https://www.linkedin.com/in/necmikural/"><img src="assets/icons/linkedin.svg" height="32" alt="LinkedIn"></a> <a href="https://huggingface.co/necmikural"><img src="assets/icons/huggingface.svg" height="32" alt="Hugging Face"></a> <a href="https://necmikural.github.io"><img src="assets/icons/website.svg" height="32" alt="Website"></a> <a href="https://www.kaggle.com/necmikural"><img src="assets/icons/kaggle.svg" height="32" alt="Kaggle"></a>
 
 <sub>Numbers below are quoted word for word from each project's README at the linked tag or commit; CI checks weekly that they are still there.</sub>
 

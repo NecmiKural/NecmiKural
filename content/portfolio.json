@@ -26,7 +26,8 @@
     },
     {
       "label": "Website",
-      "url": "https://necmikural.github.io"
+      "url": "https://necmikural.github.io",
+      "icon": "assets/icons/website.svg"
     },
     {
       "label": "Kaggle",
