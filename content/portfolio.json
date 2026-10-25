@@ -119,12 +119,12 @@
         "release": "https://github.com/NecmiKural/provenance-tiered-rag/releases/tag/v0.3.0",
         "results": "https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md",
         "visual": "https://raw.githubusercontent.com/NecmiKural/provenance-tiered-rag/c9cd7d253bd57c6d4decf92bddc32531814c8be9/docs/demo.svg",
-        "demo": null,
+        "demo": "https://huggingface.co/spaces/necmikural/provenance-rag-evidence",
         "space": null,
         "extra": []
       },
       "visual_alt": "Terminal replay of make demo: recorded GST questions answered with dated, tiered citations and the verifier's verdict, including questions carrying a planted note that is not followed",
-      "demo_note": null,
+      "demo_note": "evidence viewer: recorded answers with their dated sources, no key",
       "claims": [
         {
           "lead": "With deepseek-flash:",

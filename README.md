@@ -38,7 +38,7 @@ Question answering over New Zealand GST law, German VAT law (UStG and UStDV) and
 
 <a href="https://github.com/NecmiKural/provenance-tiered-rag"><img src="https://raw.githubusercontent.com/NecmiKural/provenance-tiered-rag/c9cd7d253bd57c6d4decf92bddc32531814c8be9/docs/demo.svg" width="640" alt="Terminal replay of make demo: recorded GST questions answered with dated, tiered citations and the verifier's verdict, including questions carrying a planted note that is not followed"></a>
 
-[Release v0.3.0](https://github.com/NecmiKural/provenance-tiered-rag/releases/tag/v0.3.0) · [Results at v0.3.0](https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md)
+[Release v0.3.0](https://github.com/NecmiKural/provenance-tiered-rag/releases/tag/v0.3.0) · [Results at v0.3.0](https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md) · [Demo](https://huggingface.co/spaces/necmikural/provenance-rag-evidence) (evidence viewer: recorded answers with their dated sources, no key)
 
 ### [mcp-code-mode](https://github.com/NecmiKural/mcp-code-mode)
 <sub>Personal project · v0.1.0 · Python, MCP, Docker</sub>

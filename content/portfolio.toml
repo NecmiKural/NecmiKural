@@ -100,6 +100,8 @@ card = "Question answering over New Zealand GST law, German VAT law (UStG and US
 stack = ["Python", "PostgreSQL", "pgvector"]
 results = "README.md"
 visual = { src = "docs/demo.svg", ref = "c9cd7d253bd57c6d4decf92bddc32531814c8be9", alt = "Terminal replay of make demo: recorded GST questions answered with dated, tiered citations and the verifier's verdict, including questions carrying a planted note that is not followed" }
+demo = "https://huggingface.co/spaces/necmikural/provenance-rag-evidence"
+demo_note = "evidence viewer: recorded answers with their dated sources, no key"
 
   [[project.claim]]
   lead = "With deepseek-flash:"
