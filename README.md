@@ -6,7 +6,7 @@
 </picture>
 
 **Necmi Kural.** Software engineer. I build tool-calling agents and retrieval systems, and measure them with evaluations that replay from recorded runs.<br>
-Postgraduate Diploma in Computer Science, University of Waikato, 2026. Based in Hamilton, New Zealand. Full-time work rights in New Zealand; no sponsorship needed.
+Postgraduate Diploma in Computer Science, University of Waikato, 2026. Based in Aotearoa. Full-time work rights in New Zealand; no sponsorship needed.
 
 [LinkedIn](https://www.linkedin.com/in/necmikural/)
 
