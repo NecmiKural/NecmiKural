@@ -25,6 +25,10 @@
       "icon": "assets/icons/huggingface.svg"
     },
     {
+      "label": "Website",
+      "url": "https://necmikural.github.io"
+    },
+    {
       "label": "Kaggle",
       "url": "https://www.kaggle.com/necmikural",
       "icon": "assets/icons/kaggle.svg"

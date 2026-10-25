@@ -36,7 +36,7 @@ show = true
 [[link]]
 label = "Website"
 url = "https://necmikural.github.io"
-show = false
+show = true
 
 [[link]]
 label = "Kaggle"
