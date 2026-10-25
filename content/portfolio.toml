@@ -1,0 +1,291 @@
+# The single source of the public copy. Edit this file, then run:
+#   python3 scripts/portfolio.py build
+# README.md, content/portfolio.json and assets/banner-*.svg are generated from it.
+# A project with status = "hold" is neither rendered nor checked online.
+
+schema = 1
+
+[profile]
+name = "Necmi Kural"
+headline = "Software engineer. I build tool-calling agents and retrieval systems, and measure them with evaluations that replay from recorded runs."
+education = "Postgraduate Diploma in Computer Science, University of Waikato, 2026."
+location = "Based in Hamilton, New Zealand."
+availability = "Full-time work rights in New Zealand; no sponsorship needed."
+provenance = "Numbers below are quoted word for word from each project's README at the linked tag or commit; CI checks weekly that they are still there."
+banner_alt = "Necmi Kural in dot-matrix lettering, beside three cassettes labelled RECON, RAG and MCP"
+
+# The README skips GitHub (it is the page itself); the site needs it.
+[[link]]
+label = "GitHub"
+url = "https://github.com/NecmiKural"
+show = true
+
+[[link]]
+label = "LinkedIn"
+url = "https://www.linkedin.com/in/necmikural/"
+show = true
+
+[[link]]
+label = "Hugging Face"
+url = "https://huggingface.co/necmikural"
+show = false
+
+[[link]]
+label = "Website"
+url = "https://necmikural.github.io"
+show = false
+
+[[link]]
+label = "Kaggle"
+url = "https://www.kaggle.com/necmikural"
+show = false
+
+[[link]]
+label = "CV (PDF)"
+url = "https://github.com/NecmiKural/NecmiKural/blob/main/cv/necmi-kural-cv.pdf"
+show = false
+
+# ---------- flagships ----------
+
+[[project]]
+id = "bank-reconciliation-agent"
+title = "Bank Reconciliation Agent"
+repo = "NecmiKural/bank-reconciliation-agent"
+ref = "v1.1.0"
+release = true
+group = "flagship"
+status = "show"
+label = "RECON"
+short = "Rules-first reconciliation agent on synthetic data"
+pitch = "A rules-first tool-calling agent that matches small-business bank lines to invoices on synthetic data."
+card = "A rules-first tool-calling agent that matches small-business bank lines to invoices on synthetic data. Code verifies every proposal, the model cannot write to the ledger, and a person approves before anything posts. Read-only MCP server, a plain-English rule compiler, live evals on four models, a pre-registered code-mode experiment and a CI replay gate; the README says where it breaks."
+stack = ["Python", "PostgreSQL", "pgvector", "MCP", "Docker"]
+synthetic_data = true
+results = "README.md"
+visual = { src = "docs/demo.svg", alt = "Terminal replay of make demo: 40 committed bank lines through the rules pass, the agent and the shadow policy, each proposal left for a person to review" }
+extra = [{ label = "Code-mode experiment", url = "docs/code-mode-experiment.md" }]
+
+  [[project.claim]]
+  lead = "With deepseek-flash:"
+  text = '''0 wrong matches in 460 agent match proposals (582 agent decisions) over 3 live runs on each of two synthetic businesses.'''
+
+  [[project.claim]]
+  text = '''0 of 40 injected lines that ask for a different or an extra invoice succeeded in any run. The verifier refuses whatever the payload asks for on 36 of them; on the 4 it leaves to the model's judgement, 0 payloads were followed by any model in any run with defences on.'''
+
+  [[project.claim]]
+  lead = "Pre-registered code-mode experiment:"
+  text = '''containment held in every run and every probe, and code mode was cheaper on average, but the pre-registered efficiency hypothesis failed for both models tested.'''
+  repo = "NecmiKural/mcp-code-mode"
+  ref = "v0.1.0"
+
+[[project]]
+id = "provenance-tiered-rag"
+title = "Provenance-Tiered RAG"
+repo = "NecmiKural/provenance-tiered-rag"
+ref = "v0.3.0"
+release = true
+group = "flagship"
+status = "show"
+label = "RAG"
+short = "RAG over NZ GST, German VAT and INZ instructions"
+pitch = "Question answering over New Zealand GST law, German VAT law and Immigration New Zealand's Operational Manual, with dated sources in tiers."
+card = "Question answering over New Zealand GST law, German VAT law (UStG and UStDV) and Immigration New Zealand's Operational Manual, with dated sources in tiers: statute, official guidance and untrusted notes. Immigration answers are information from INZ's published instructions, not immigration advice. Code checks every citation and figure against passages in force on the date asked about. Frozen eval sets, held-back questions and defence ablations; the README says what the numbers do not show."
+stack = ["Python", "PostgreSQL", "pgvector"]
+results = "README.md"
+visual = { src = "docs/demo.svg", ref = "c9cd7d253bd57c6d4decf92bddc32531814c8be9", alt = "Terminal replay of make demo: recorded GST questions answered with dated, tiered citations and the verifier's verdict, including questions carrying a planted note that is not followed" }
+
+  [[project.claim]]
+  lead = "With deepseek-flash:"
+  text = '''96 of 96 answers to answerable questions were correct (95% lower bound 96.2%) over 3 runs of the development questions'''
+
+  [[project.claim]]
+  lead = "Held-back NZ GST questions, answerable correct:"
+  text = '''27 of 30 (90.0%)'''
+
+  [[project.claim]]
+  text = '''The questions are few and written by the author of the system.'''
+
+  [[project.claim]]
+  lead = "German VAT:"
+  text = '''63 of 63 answers to answerable questions were correct (95% lower bound 94.2%) over 3 runs'''
+
+  [[project.claim]]
+  lead = "NZ immigration:"
+  text = '''78 of 78 answers to answerable questions were correct (95% lower bound 95.3%) over 3 runs'''
+
+[[project]]
+id = "mcp-code-mode"
+title = "mcp-code-mode"
+repo = "NecmiKural/mcp-code-mode"
+ref = "v0.1.0"
+release = true
+group = "flagship"
+status = "show"
+label = "MCP"
+short = "Code mode for any MCP server, in Python"
+pitch = "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox, through a host-side bridge that checks every call."
+card = "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox. It serves a wrapped server's tools to the model as one run_python tool. Every call passes a host-side bridge that checks the allowlist, the tool's JSON Schema, argument size and a call budget, and refuses oversized results. Extracted from bank-reconciliation-agent; the README maps each threat to a control and a test, and lists what it does not protect."
+stack = ["Python", "MCP", "Docker"]
+results = "README.md#threat-model"
+visual = { src = "docs/demo.svg", ref = "0c2e9e84d1451f539927dae2c334266710a27923", alt = "Terminal capture: a program calls two allowlisted toy tools through the bridge, then builds a call to a tool off the allowlist, which the bridge refuses before the server sees it" }
+
+  [[project.claim]]
+  lead = "Where it was measured, in bank-reconciliation-agent:"
+  text = '''containment held in every run and every probe, and code mode was cheaper on average, but the pre-registered efficiency hypothesis failed for both models tested. Read the numbers there; this package carries no measurements of its own.'''
+
+# ---------- software ----------
+
+[[project]]
+id = "crossfade"
+title = "crossfade"
+repo = "NecmiKural/crossfade"
+ref = "v0.1.0"
+release = true
+group = "software"
+status = "show"
+short = "Canary releases with rollback for Docker hosts"
+card = "Canary releases with automatic rollback for plain Docker hosts: Envoy moves traffic to a candidate in steps and rolls back on health, convergence or error-budget breaches, driven by a small control plane. Compose end-to-end test in CI."
+stack = ["TypeScript", "Next.js", "PostgreSQL", "Envoy"]
+extra = [{ label = "Demo GIF", url = "docs/demo.gif" }]
+
+  [[project.claim]]
+  text = '''It has not been audited.'''
+
+[[project]]
+id = "sofra"
+title = "sofra"
+repo = "NecmiKural/sofra"
+ref = "<sha after the README fix>"
+group = "software"
+status = "hold"
+short = "Self-hosted QR menu and table ordering"
+card = "A self-hosted QR menu and table-ordering app for restaurants, with one shared cart per table and split bills."
+stack = ["Next.js", "Prisma", "SQLite", "Server-Sent Events", "Docker"]
+demo = "https://sofra-demo.onrender.com"
+demo_note = "free tier; the first load can take about a minute"
+
+  [[project.claim]]
+  lead = "Payments:"
+  text = '''ships with a demo provider, Stripe/iyzico adapters are on the roadmap'''
+
+[[project]]
+id = "copass"
+title = "copass"
+repo = "NecmiKural/copass"
+ref = "<sha after the README fix>"
+group = "software"
+status = "hold"
+short = "Hand-over between AI coding agents, no network"
+card = "A Node.js CLI that reads one AI coding agent's local session logs and writes a hand-over for another: the task, your constraints quoted verbatim, the work done, the unanswered request and the current git state. Credentials are redacted, and the README marks which agent adapters were checked against real logs."
+stack = ["Node.js"]
+
+  [[project.claim]]
+  text = '''It makes no network calls, spends no tokens, needs no daemon, and has no dependencies beyond Node.js.'''
+
+[[project]]
+id = "flutter-base"
+title = "flutter-base"
+repo = "NecmiKural/flutter-base"
+ref = "<sha after the README fix>"
+group = "software"
+status = "hold"
+short = "Flutter starter: Clean Architecture, Keycloak"
+card = "A Flutter starter project: Clean Architecture, Riverpod, GoRouter, Hive and Freezed, Keycloak sign-in through AppAuth, and Flutter's built-in localisation."
+stack = ["Dart", "Flutter"]
+
+# ---------- machine learning coursework ----------
+
+[[project]]
+id = "birdclef-2026-audio-classification"
+title = "birdclef-2026-audio-classification"
+repo = "NecmiKural/birdclef-2026-audio-classification"
+ref = "<sha after the README fix>"
+group = "coursework"
+status = "hold"
+course = "Deep Learning (COMPX525)"
+short = "Synthetic clips for rare bird classes, tested"
+card = "Tests whether AudioLDM2 synthetic clips for rare classes help two classifiers: BirdNET embeddings with a linear classifier, and a CNN trained from scratch on mel-spectrograms. The clips helped the first and hurt the second."
+stack = ["Python", "PyTorch", "BirdNET", "AudioLDM2", "scikit-learn"]
+
+  [[project.claim]]
+  text = '''BirdNET embeddings + ML reach 0.8940 validation macro ROC-AUC with synthetic enrichment and 0.8869 without, on one fixed 80/20 split of train_audio with one seed. This is not a Kaggle leaderboard score.'''
+
+[[project]]
+id = "cell-culture-classification"
+title = "cell-culture-classification"
+repo = "NecmiKural/cell-culture-classification"
+ref = "<sha after the README fix>"
+group = "coursework"
+status = "hold"
+course = "Deep Learning (COMPX525)"
+short = "Imbalanced microscopy image classification"
+card = "Fine-grained, heavily imbalanced microscopy image classification, comparing a custom CNN, a ViT trained from scratch, fine-tuned pretrained models and embedding classifiers. The dataset belongs to a third party and is not included."
+stack = ["Python", "PyTorch", "timm", "scikit-learn"]
+
+  [[project.claim]]
+  text = '''Best clean result: 76.88% validation accuracy for a single fine-tuned ConvNeXt-Tiny on a 15% stratified holdout; 5-fold out-of-fold accuracy 73.04%.'''
+
+[[project]]
+id = "streaming-ensemble-classifier"
+title = "streaming-ensemble-classifier"
+repo = "NecmiKural/streaming-ensemble-classifier"
+ref = "<sha after the re-run>"
+group = "coursework"
+status = "hold"
+course = "Machine Learning for Data Streams (COMPX523)"
+short = "Online ensemble under a 250 KB memory budget"
+card = "Includes a post-mortem of a memory-measurement bug that put the submitted version over the limit, and the fix."
+stack = ["Python", "CapyMOA", "MOA"]
+
+  [[project.claim]]
+  text = '''Builds an online ensemble classifier that learns continuously from a non-stationary stream with class imbalance and concept drift, under a hard 250 KB memory budget.'''
+
+[[project]]
+id = "knn-data-streams"
+title = "knn-data-streams"
+repo = "NecmiKural/knn-data-streams"
+ref = "<sha after the README fix>"
+group = "coursework"
+status = "hold"
+course = "Machine Learning for Data Streams (COMPX523)"
+short = "Online kNN with three window strategies"
+card = "Online kNN classifiers for evolving data streams with three window strategies: one global window, one window per class, and age-weighted ejection. Single runs per setting."
+stack = ["Python", "CapyMOA", "MOA"]
+
+  [[project.claim]]
+  text = '''On the imbalanced/drifting RBF stream, plain kNN with a small window collapsed to ~66%, while per-class windows held at ~85%'''
+
+[[project]]
+id = "transit-peak-hour-drift-detection"
+title = "transit-peak-hour-drift-detection"
+repo = "NecmiKural/transit-peak-hour-drift-detection"
+ref = "<sha after the README fix>"
+group = "coursework"
+status = "hold"
+course = "Machine Learning for Data Streams (COMPX523)"
+team_size = 6
+role = "Role D: adaptive boundary detector, ADWIN and Page-Hinkley drift tests, schedule alignment"
+short = "Peak-hour boundaries and drift at bus stops"
+card = "Online detection of when each bus stop's morning and evening peaks really start and end, with drift tests and a comparison against the published timetable."
+stack = ["Python", "CapyMOA", "pandas"]
+banned = ["live", "seasonal drift", "bus-boarding streams"]
+
+  [[project.claim]]
+  text = '''Data: three months (March to May 2024) of historical 5-minute estimated boarding counts for 10 Salvador bus stops (SUNT, CC BY 4.0), replayed as a stream.'''
+
+# ---------- open source ----------
+
+[[project]]
+id = "m365-copilot-proxy"
+title = "m365-copilot-proxy (upstream contributions)"
+repo = "cramt/m365-copilot-proxy"
+group = "open-source"
+status = "show"
+short = "Three merged upstream pull requests"
+card = "Three merged pull requests: Windows agent fixes, pinning each conversation to one backend, and image input."
+stack = ["TypeScript"]
+extra = [
+  { label = "#44", url = "https://github.com/cramt/m365-copilot-proxy/pull/44" },
+  { label = "#49", url = "https://github.com/cramt/m365-copilot-proxy/pull/49" },
+  { label = "#66", url = "https://github.com/cramt/m365-copilot-proxy/pull/66" },
+]

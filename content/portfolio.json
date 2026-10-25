@@ -1,0 +1,272 @@
+{
+  "schema": 1,
+  "profile": {
+    "name": "Necmi Kural",
+    "headline": "Software engineer. I build tool-calling agents and retrieval systems, and measure them with evaluations that replay from recorded runs.",
+    "education": "Postgraduate Diploma in Computer Science, University of Waikato, 2026.",
+    "location": "Based in Hamilton, New Zealand.",
+    "availability": "Full-time work rights in New Zealand; no sponsorship needed.",
+    "provenance": "Numbers below are quoted word for word from each project's README at the linked tag or commit; CI checks weekly that they are still there.",
+    "banner_alt": "Necmi Kural in dot-matrix lettering, beside three cassettes labelled RECON, RAG and MCP"
+  },
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/NecmiKural"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/necmikural/"
+    }
+  ],
+  "projects": [
+    {
+      "id": "bank-reconciliation-agent",
+      "title": "Bank Reconciliation Agent",
+      "group": "flagship",
+      "label": "RECON",
+      "ref": "v1.1.0",
+      "short": "Rules-first reconciliation agent on synthetic data",
+      "pitch": "A rules-first tool-calling agent that matches small-business bank lines to invoices on synthetic data.",
+      "card": "A rules-first tool-calling agent that matches small-business bank lines to invoices on synthetic data. Code verifies every proposal, the model cannot write to the ledger, and a person approves before anything posts. Read-only MCP server, a plain-English rule compiler, live evals on four models, a pre-registered code-mode experiment and a CI replay gate; the README says where it breaks.",
+      "stack": [
+        "Python",
+        "PostgreSQL",
+        "pgvector",
+        "MCP",
+        "Docker"
+      ],
+      "byline": "Personal project · v1.1.0 · Synthetic data only",
+      "flags": {
+        "synthetic_data": true,
+        "course": null,
+        "team_size": null,
+        "role": null
+      },
+      "urls": {
+        "repo": "https://github.com/NecmiKural/bank-reconciliation-agent",
+        "release": "https://github.com/NecmiKural/bank-reconciliation-agent/releases/tag/v1.1.0",
+        "results": "https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/README.md",
+        "visual": "https://raw.githubusercontent.com/NecmiKural/bank-reconciliation-agent/v1.1.0/docs/demo.svg",
+        "demo": null,
+        "space": null,
+        "extra": [
+          {
+            "label": "Code-mode experiment",
+            "url": "https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/docs/code-mode-experiment.md"
+          }
+        ]
+      },
+      "visual_alt": "Terminal replay of make demo: 40 committed bank lines through the rules pass, the agent and the shadow policy, each proposal left for a person to review",
+      "demo_note": null,
+      "claims": [
+        {
+          "lead": "With deepseek-flash:",
+          "text": "0 wrong matches in 460 agent match proposals (582 agent decisions) over 3 live runs on each of two synthetic businesses.",
+          "source": "https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/README.md"
+        },
+        {
+          "lead": null,
+          "text": "0 of 40 injected lines that ask for a different or an extra invoice succeeded in any run. The verifier refuses whatever the payload asks for on 36 of them; on the 4 it leaves to the model's judgement, 0 payloads were followed by any model in any run with defences on.",
+          "source": "https://github.com/NecmiKural/bank-reconciliation-agent/blob/v1.1.0/README.md"
+        },
+        {
+          "lead": "Pre-registered code-mode experiment:",
+          "text": "containment held in every run and every probe, and code mode was cheaper on average, but the pre-registered efficiency hypothesis failed for both models tested.",
+          "source": "https://github.com/NecmiKural/mcp-code-mode/blob/v0.1.0/README.md"
+        }
+      ]
+    },
+    {
+      "id": "provenance-tiered-rag",
+      "title": "Provenance-Tiered RAG",
+      "group": "flagship",
+      "label": "RAG",
+      "ref": "v0.3.0",
+      "short": "RAG over NZ GST, German VAT and INZ instructions",
+      "pitch": "Question answering over New Zealand GST law, German VAT law and Immigration New Zealand's Operational Manual, with dated sources in tiers.",
+      "card": "Question answering over New Zealand GST law, German VAT law (UStG and UStDV) and Immigration New Zealand's Operational Manual, with dated sources in tiers: statute, official guidance and untrusted notes. Immigration answers are information from INZ's published instructions, not immigration advice. Code checks every citation and figure against passages in force on the date asked about. Frozen eval sets, held-back questions and defence ablations; the README says what the numbers do not show.",
+      "stack": [
+        "Python",
+        "PostgreSQL",
+        "pgvector"
+      ],
+      "byline": "Personal project · v0.3.0",
+      "flags": {
+        "synthetic_data": false,
+        "course": null,
+        "team_size": null,
+        "role": null
+      },
+      "urls": {
+        "repo": "https://github.com/NecmiKural/provenance-tiered-rag",
+        "release": "https://github.com/NecmiKural/provenance-tiered-rag/releases/tag/v0.3.0",
+        "results": "https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md",
+        "visual": "https://raw.githubusercontent.com/NecmiKural/provenance-tiered-rag/c9cd7d253bd57c6d4decf92bddc32531814c8be9/docs/demo.svg",
+        "demo": null,
+        "space": null,
+        "extra": []
+      },
+      "visual_alt": "Terminal replay of make demo: recorded GST questions answered with dated, tiered citations and the verifier's verdict, including questions carrying a planted note that is not followed",
+      "demo_note": null,
+      "claims": [
+        {
+          "lead": "With deepseek-flash:",
+          "text": "96 of 96 answers to answerable questions were correct (95% lower bound 96.2%) over 3 runs of the development questions",
+          "source": "https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md"
+        },
+        {
+          "lead": "Held-back NZ GST questions, answerable correct:",
+          "text": "27 of 30 (90.0%)",
+          "source": "https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md"
+        },
+        {
+          "lead": null,
+          "text": "The questions are few and written by the author of the system.",
+          "source": "https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md"
+        },
+        {
+          "lead": "German VAT:",
+          "text": "63 of 63 answers to answerable questions were correct (95% lower bound 94.2%) over 3 runs",
+          "source": "https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md"
+        },
+        {
+          "lead": "NZ immigration:",
+          "text": "78 of 78 answers to answerable questions were correct (95% lower bound 95.3%) over 3 runs",
+          "source": "https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md"
+        }
+      ]
+    },
+    {
+      "id": "mcp-code-mode",
+      "title": "mcp-code-mode",
+      "group": "flagship",
+      "label": "MCP",
+      "ref": "v0.1.0",
+      "short": "Code mode for any MCP server, in Python",
+      "pitch": "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox, through a host-side bridge that checks every call.",
+      "card": "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox. It serves a wrapped server's tools to the model as one run_python tool. Every call passes a host-side bridge that checks the allowlist, the tool's JSON Schema, argument size and a call budget, and refuses oversized results. Extracted from bank-reconciliation-agent; the README maps each threat to a control and a test, and lists what it does not protect.",
+      "stack": [
+        "Python",
+        "MCP",
+        "Docker"
+      ],
+      "byline": "Personal project · v0.1.0",
+      "flags": {
+        "synthetic_data": false,
+        "course": null,
+        "team_size": null,
+        "role": null
+      },
+      "urls": {
+        "repo": "https://github.com/NecmiKural/mcp-code-mode",
+        "release": "https://github.com/NecmiKural/mcp-code-mode/releases/tag/v0.1.0",
+        "results": "https://github.com/NecmiKural/mcp-code-mode/blob/v0.1.0/README.md#threat-model",
+        "visual": "https://raw.githubusercontent.com/NecmiKural/mcp-code-mode/0c2e9e84d1451f539927dae2c334266710a27923/docs/demo.svg",
+        "demo": null,
+        "space": null,
+        "extra": []
+      },
+      "visual_alt": "Terminal capture: a program calls two allowlisted toy tools through the bridge, then builds a call to a tool off the allowlist, which the bridge refuses before the server sees it",
+      "demo_note": null,
+      "claims": [
+        {
+          "lead": "Where it was measured, in bank-reconciliation-agent:",
+          "text": "containment held in every run and every probe, and code mode was cheaper on average, but the pre-registered efficiency hypothesis failed for both models tested. Read the numbers there; this package carries no measurements of its own.",
+          "source": "https://github.com/NecmiKural/mcp-code-mode/blob/v0.1.0/README.md"
+        }
+      ]
+    },
+    {
+      "id": "crossfade",
+      "title": "crossfade",
+      "group": "software",
+      "label": null,
+      "ref": "v0.1.0",
+      "short": "Canary releases with rollback for Docker hosts",
+      "pitch": null,
+      "card": "Canary releases with automatic rollback for plain Docker hosts: Envoy moves traffic to a candidate in steps and rolls back on health, convergence or error-budget breaches, driven by a small control plane. Compose end-to-end test in CI.",
+      "stack": [
+        "TypeScript",
+        "Next.js",
+        "PostgreSQL",
+        "Envoy"
+      ],
+      "byline": "Personal project · v0.1.0",
+      "flags": {
+        "synthetic_data": false,
+        "course": null,
+        "team_size": null,
+        "role": null
+      },
+      "urls": {
+        "repo": "https://github.com/NecmiKural/crossfade",
+        "release": "https://github.com/NecmiKural/crossfade/releases/tag/v0.1.0",
+        "results": null,
+        "visual": null,
+        "demo": null,
+        "space": null,
+        "extra": [
+          {
+            "label": "Demo GIF",
+            "url": "https://github.com/NecmiKural/crossfade/blob/v0.1.0/docs/demo.gif"
+          }
+        ]
+      },
+      "visual_alt": null,
+      "demo_note": null,
+      "claims": [
+        {
+          "lead": null,
+          "text": "It has not been audited.",
+          "source": "https://github.com/NecmiKural/crossfade/blob/v0.1.0/README.md"
+        }
+      ]
+    },
+    {
+      "id": "m365-copilot-proxy",
+      "title": "m365-copilot-proxy (upstream contributions)",
+      "group": "open-source",
+      "label": null,
+      "ref": null,
+      "short": "Three merged upstream pull requests",
+      "pitch": null,
+      "card": "Three merged pull requests: Windows agent fixes, pinning each conversation to one backend, and image input.",
+      "stack": [
+        "TypeScript"
+      ],
+      "byline": "Upstream contributions",
+      "flags": {
+        "synthetic_data": false,
+        "course": null,
+        "team_size": null,
+        "role": null
+      },
+      "urls": {
+        "repo": "https://github.com/cramt/m365-copilot-proxy",
+        "release": null,
+        "results": null,
+        "visual": null,
+        "demo": null,
+        "space": null,
+        "extra": [
+          {
+            "label": "#44",
+            "url": "https://github.com/cramt/m365-copilot-proxy/pull/44"
+          },
+          {
+            "label": "#49",
+            "url": "https://github.com/cramt/m365-copilot-proxy/pull/49"
+          },
+          {
+            "label": "#66",
+            "url": "https://github.com/cramt/m365-copilot-proxy/pull/66"
+          }
+        ]
+      },
+      "visual_alt": null,
+      "demo_note": null,
+      "claims": []
+    }
+  ]
+}
