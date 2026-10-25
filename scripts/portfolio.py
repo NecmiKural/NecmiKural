@@ -376,7 +376,7 @@ def render_readme(data: dict) -> str:
         "</picture>",
         "",
         f"**{md(prof['name'])}.** {md(prof['headline'])}<br>",
-        " ".join(md(prof[k]) for k in ("education", "location", "availability")),
+        " ".join(md(prof[k]) for k in ("education", "location", "availability") if prof[k]),
         "",
         links,
         "",
