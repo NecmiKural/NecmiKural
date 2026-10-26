@@ -26,6 +26,7 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+SITE = "https://necmikural.github.io/"
 TOML = ROOT / "content" / "portfolio.toml"
 README, JSON = ROOT / "README.md", ROOT / "content" / "portfolio.json"
 BANNERS = {
@@ -606,6 +607,14 @@ def fetch(url: str) -> tuple[int | str, str]:
         return type(exc).__name__, ""
 
 
+def site_copy(url: str) -> Path | None:
+    """A link into the site (other than its root) is a file of this repo that the site copies
+    byte for byte (its sync-content, checked in its CI), so it is checked here as that file:
+    fetching it would fail until the site deploys the change."""
+    path = url[len(SITE) :] if url.startswith(SITE) else ""
+    return ROOT / path if path and ".." not in path else None
+
+
 def check_online(data: dict, terms: list[str]) -> list[str]:
     projects = shown(data)
     wanted = {
@@ -617,9 +626,15 @@ def check_online(data: dict, terms: list[str]) -> list[str]:
     wanted |= {f"https://api.github.com/repos/{p['repo']}" for p in own}
     wanted |= {raw(p["repo"], "HEAD", "README.md") for p in own}
     links = set(URL.findall(README.read_text(encoding="utf-8") + JSON.read_text(encoding="utf-8")))
+    copies = {u: site_copy(u) for u in links if site_copy(u)}
+    links -= set(copies)
     with ThreadPoolExecutor(8) as pool:
         got = dict(zip(sorted(wanted | links), pool.map(fetch, sorted(wanted | links))))
-    errors = []
+    errors = [
+        f"link {u}: the site serves a copy of {path.relative_to(ROOT)}, which does not exist"
+        for u, path in sorted(copies.items())
+        if not path.is_file()
+    ]
     for p in projects:
         for c in claims(p):
             url = raw(
@@ -647,7 +662,10 @@ def check_online(data: dict, terms: list[str]) -> list[str]:
         if status != 200 and not (status == 999 and "linkedin.com" in url):
             errors.append(f"link {url} returned {status}")
     n = sum(len(claims(p)) for p in projects)
-    print(f"online: {n} claims, {len(own)} repos (description and HEAD README), {len(links)} links")
+    print(
+        f"online: {n} claims, {len(own)} repos (description and HEAD README), {len(links)} links,"
+        f" {len(copies)} site copies"
+    )
     return errors
 
 
@@ -657,6 +675,9 @@ def selftest() -> None:
     assert numbers("v1.1.0, H1, COMPX525: 95% of 0.8940 in 2026.") == {"95%", "0.8940", "2026"}
     assert numbers("27 of 30 (90.0%)") == {"27", "30", "90.0%"}
     assert REF.fullmatch("v1.1.0") and REF.fullmatch("a" * 40) and not REF.fullmatch("main")
+    assert site_copy(SITE + "cv/x.pdf") == ROOT / "cv/x.pdf"
+    assert site_copy(SITE) is None and site_copy(SITE + "../x") is None
+    assert site_copy("https://github.com/NecmiKural") is None
     one, two = {"src": "a.png"}, {"src": "b.png"}
     assert visuals({"visual": one}) == [one] and visuals({"visual": [one, two]}) == [one, two]
     assert visuals({}) == []
