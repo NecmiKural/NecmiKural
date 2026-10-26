@@ -217,7 +217,10 @@ course = "Deep Learning (COMPX525)"
 short = "Synthetic clips for rare bird classes, tested"
 card = "Tests whether AudioLDM2 synthetic clips for rare classes help two classifiers: BirdNET embeddings with a linear classifier, and a CNN trained from scratch on mel-spectrograms. The clips helped the first and hurt the second."
 stack = ["Python", "PyTorch", "BirdNET", "AudioLDM2", "scikit-learn"]
-visual = { src = "figures/fig_experiment_flow.png", ref = "d6540d14b8524af137806dcefdde460a79e9256f", alt = "Flow chart of the experiments: the training list is split into real training and validation sets; rare classes get synthetic clips from AudioLDM2; four models, BirdNET embeddings with a linear classifier and a compact CNN on mel spectrograms, each with and without the synthetic clips, are scored on one shared validation set by macro ROC-AUC", caption = "The experiment design. The audio is BirdCLEF+ 2026 competition data; the synthetic clips were generated for the rare classes." }
+visual = [
+  { src = "figures/spec_sptnig1.png", ref = "d6540d14b8524af137806dcefdde460a79e9256f", alt = "Two mel spectrograms of five seconds each: a real Spot-tailed Nightjar recording, with repeated arcs of song over background noise, and an AudioLDM2 synthetic clip made of flat horizontal bands. The title gives the class's validation ROC-AUC as 0.172 without synthetic clips and 0.971 with them", caption = "Mel spectrograms derived from BirdCLEF+ 2026 competition audio: a real Spot-tailed Nightjar clip and an AudioLDM2 one. For this rare class, synthetic clips lifted the CNN's AUC from 0.172 to 0.971." },
+  { src = "figures/fig_experiment_flow.png", ref = "d6540d14b8524af137806dcefdde460a79e9256f", alt = "Flow chart of the experiments: the training list is split into real training and validation sets; rare classes get synthetic clips from AudioLDM2; four models, BirdNET embeddings with a linear classifier and a compact CNN on mel spectrograms, each with and without the synthetic clips, are scored on one shared validation set by macro ROC-AUC", caption = "The experiment design. The audio is BirdCLEF+ 2026 competition data; the synthetic clips were generated for the rare classes." },
+]
 extra = [{ label = "Kaggle notebook", url = "https://www.kaggle.com/code/necmikural/birdclef-2026-synthetic-enrichment-summary" }]
 
   [[project.claim]]
@@ -286,7 +289,7 @@ role = "Role D: adaptive boundary detector, ADWIN and Page-Hinkley drift tests, 
 short = "Peak-hour boundaries and drift at bus stops"
 card = "Online detection of when each bus stop's morning and evening peaks really start and end, with drift tests and a comparison against the published timetable."
 stack = ["Python", "CapyMOA", "pandas"]
-visual = { src = "figures/role_E_polished/E2_peak_boundary_over_time_polished.png", ref = "35b56df30fd9a8d2749ad8746cb667e337533ac8", alt = "Line chart of the detected morning peak start at one stop, day by day from March to May 2024, moving between about a quarter to six and twenty to seven, with rainy days marked", caption = "Detected peak start over time at one stop. Figure by Saurabh Jyala (Role E: evaluation and visualisation), from the group's repository." }
+visual = { src = "figures/role_E_polished/E2_peak_boundary_over_time_polished.png", ref = "35b56df30fd9a8d2749ad8746cb667e337533ac8", alt = "Line chart of the detected morning peak start at one stop, day by day from March to May 2024, moving between about a quarter to six and twenty to seven, with rainy days marked", caption = "Detected peak start over time at one stop. A figure by Role E (evaluation and visualisation) in the group's repository." }
 demo = "https://huggingface.co/spaces/necmikural/transit-peak-hours"
 demo_note = "charts: detected peak starts, drift tests, timetable gaps"
 banned = ["live", "seasonal drift", "bus-boarding streams"]

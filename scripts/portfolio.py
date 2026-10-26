@@ -198,9 +198,8 @@ def validate(data: dict) -> list[str]:
             continue
         refs = [p.get("ref")] if p.get("release") or claims(p) or p.get("results") else []
         refs += [c["ref"] for c in claims(p) if "ref" in c]
-        refs += [p["visual"]["ref"]] if "ref" in p.get("visual", {}) else []
-        visual = p.get("visual")
-        if visual is not None:
+        refs += [v["ref"] for v in visuals(p) if "ref" in v]
+        for visual in visuals(p):
             # A file in the project's own repo, pinned to a commit, described for screen readers.
             if not re.fullmatch(r"[\w./-]+\.(svg|png|gif)", visual.get("src", "")):
                 bad("visual src must be a path to an .svg, .png or .gif file in the repo")
@@ -228,16 +227,20 @@ def raw(repo: str, ref: str, path: str) -> str:
     return f"https://raw.githubusercontent.com/{repo}/{ref}/{path}"
 
 
+def visuals(p: dict) -> list[dict]:
+    """A project's visuals, the main one first: `visual` is one table or a list of them."""
+    v = p.get("visual", [])
+    return [v] if isinstance(v, dict) else v
+
+
+def visual_url(p: dict, v: dict) -> str:
+    return v["src"] if "://" in v["src"] else raw(p["repo"], v.get("ref", p.get("ref")), v["src"])
+
+
 def urls(p: dict) -> dict:
     repo, ref = p["repo"], p.get("ref")
     at = lambda path: path if "://" in path else blob(repo, ref, path)
-    visual = p.get("visual")
-    if visual:
-        visual = (
-            visual["src"]
-            if "://" in visual["src"]
-            else raw(repo, visual.get("ref", ref), visual["src"])
-        )
+    visual = next((visual_url(p, v) for v in visuals(p)), None)
     return {
         "repo": f"https://github.com/{repo}",
         "release": f"https://github.com/{repo}/releases/tag/{ref}" if p.get("release") else None,
@@ -292,8 +295,10 @@ def project_json(p: dict) -> dict:
             "role": p.get("role"),
         },
         "urls": urls(p),
-        "visual_alt": p.get("visual", {}).get("alt"),
-        "visual_caption": p.get("visual", {}).get("caption"),
+        "visuals": [
+            {"url": visual_url(p, v), "alt": v["alt"], "caption": v.get("caption")}
+            for v in visuals(p)
+        ],
         "demo_note": p.get("demo_note"),
         "claims": [
             {"lead": c.get("lead"), "text": c["text"], "source": source(p, c)[0]} for c in claims(p)
@@ -354,7 +359,7 @@ def flagship(p: dict) -> list[str]:
     out += ["", md(p["card"]), ""]
     out += [f"- {claim_line(p, c)}" for c in claims(p)[:3]]
     if u["visual"]:
-        alt = attr(p["visual"]["alt"])
+        alt = attr(visuals(p)[0]["alt"])
         out += ["", f'<a href="{u["repo"]}"><img src="{u["visual"]}" width="640" alt="{alt}"></a>']
     return out + ["", SEP.join(link_row(p)), ""]
 
@@ -615,6 +620,9 @@ def selftest() -> None:
     assert numbers("v1.1.0, H1, COMPX525: 95% of 0.8940 in 2026.") == {"95%", "0.8940", "2026"}
     assert numbers("27 of 30 (90.0%)") == {"27", "30", "90.0%"}
     assert REF.fullmatch("v1.1.0") and REF.fullmatch("a" * 40) and not REF.fullmatch("main")
+    one, two = {"src": "a.png"}, {"src": "b.png"}
+    assert visuals({"visual": one}) == [one] and visuals({"visual": [one, two]}) == [one, two]
+    assert visuals({}) == []
     for dash in (chr(0x2013), chr(0x2014), "&" + "mdash;", "&#" + "8211;"):
         assert lint(f"fine\nbad {dash} here", "f") == ["f:2: em or en dash"]
     assert lint("well-tested, a - b", "f") == []

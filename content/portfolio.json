@@ -78,8 +78,13 @@
           }
         ]
       },
-      "visual_alt": "Terminal replay of make demo: 40 committed bank lines through the rules pass, the agent and the shadow policy, each proposal left for a person to review",
-      "visual_caption": null,
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/bank-reconciliation-agent/1ef296a657995782518defe0c8106365d300032f/docs/demo.svg",
+          "alt": "Terminal replay of make demo: 40 committed bank lines through the rules pass, the agent and the shadow policy, each proposal left for a person to review",
+          "caption": null
+        }
+      ],
       "demo_note": "replay viewer: recorded runs, synthetic data, no key",
       "claims": [
         {
@@ -129,8 +134,13 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": "Terminal replay of make demo: recorded GST questions answered with dated, tiered citations and the verifier's verdict, including questions carrying a planted note that is not followed",
-      "visual_caption": null,
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/provenance-tiered-rag/c9cd7d253bd57c6d4decf92bddc32531814c8be9/docs/demo.svg",
+          "alt": "Terminal replay of make demo: recorded GST questions answered with dated, tiered citations and the verifier's verdict, including questions carrying a planted note that is not followed",
+          "caption": null
+        }
+      ],
       "demo_note": "evidence viewer: recorded answers with their dated sources, no key",
       "claims": [
         {
@@ -190,8 +200,13 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": "Terminal capture: a program calls two allowlisted toy tools through the bridge, then builds a call to a tool off the allowlist, which the bridge refuses before the server sees it",
-      "visual_caption": null,
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/mcp-code-mode/0c2e9e84d1451f539927dae2c334266710a27923/docs/demo.svg",
+          "alt": "Terminal capture: a program calls two allowlisted toy tools through the bridge, then builds a call to a tool off the allowlist, which the bridge refuses before the server sees it",
+          "caption": null
+        }
+      ],
       "demo_note": null,
       "claims": [
         {
@@ -237,8 +252,13 @@
           }
         ]
       },
-      "visual_alt": "Screen recording of the release board: a candidate version that fails its requests is rolled back on its own and an incident card is filed, then a clean version moves through the traffic steps and is promoted",
-      "visual_caption": "The demo from the README: an automatic rollback, then a promotion.",
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/crossfade/c6f9b6fe164f1b88876c3d6fadd42e13d058363c/docs/demo.gif",
+          "alt": "Screen recording of the release board: a candidate version that fails its requests is rolled back on its own and an incident card is filed, then a clean version moves through the traffic steps and is promoted",
+          "caption": "The demo from the README: an automatic rollback, then a promotion."
+        }
+      ],
       "demo_note": null,
       "claims": [
         {
@@ -280,8 +300,7 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": null,
-      "visual_caption": null,
+      "visuals": [],
       "demo_note": "free tier; the first load can take about a minute",
       "claims": [
         {
@@ -319,8 +338,7 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": null,
-      "visual_caption": null,
+      "visuals": [],
       "demo_note": null,
       "claims": [
         {
@@ -359,8 +377,7 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": null,
-      "visual_caption": null,
+      "visuals": [],
       "demo_note": null,
       "claims": []
     },
@@ -391,7 +408,7 @@
         "repo": "https://github.com/NecmiKural/birdclef-2026-audio-classification",
         "release": null,
         "results": null,
-        "visual": "https://raw.githubusercontent.com/NecmiKural/birdclef-2026-audio-classification/d6540d14b8524af137806dcefdde460a79e9256f/figures/fig_experiment_flow.png",
+        "visual": "https://raw.githubusercontent.com/NecmiKural/birdclef-2026-audio-classification/d6540d14b8524af137806dcefdde460a79e9256f/figures/spec_sptnig1.png",
         "demo": null,
         "space": null,
         "extra": [
@@ -401,8 +418,18 @@
           }
         ]
       },
-      "visual_alt": "Flow chart of the experiments: the training list is split into real training and validation sets; rare classes get synthetic clips from AudioLDM2; four models, BirdNET embeddings with a linear classifier and a compact CNN on mel spectrograms, each with and without the synthetic clips, are scored on one shared validation set by macro ROC-AUC",
-      "visual_caption": "The experiment design. The audio is BirdCLEF+ 2026 competition data; the synthetic clips were generated for the rare classes.",
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/birdclef-2026-audio-classification/d6540d14b8524af137806dcefdde460a79e9256f/figures/spec_sptnig1.png",
+          "alt": "Two mel spectrograms of five seconds each: a real Spot-tailed Nightjar recording, with repeated arcs of song over background noise, and an AudioLDM2 synthetic clip made of flat horizontal bands. The title gives the class's validation ROC-AUC as 0.172 without synthetic clips and 0.971 with them",
+          "caption": "Mel spectrograms derived from BirdCLEF+ 2026 competition audio: a real Spot-tailed Nightjar clip and an AudioLDM2 one. For this rare class, synthetic clips lifted the CNN's AUC from 0.172 to 0.971."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/birdclef-2026-audio-classification/d6540d14b8524af137806dcefdde460a79e9256f/figures/fig_experiment_flow.png",
+          "alt": "Flow chart of the experiments: the training list is split into real training and validation sets; rare classes get synthetic clips from AudioLDM2; four models, BirdNET embeddings with a linear classifier and a compact CNN on mel spectrograms, each with and without the synthetic clips, are scored on one shared validation set by macro ROC-AUC",
+          "caption": "The experiment design. The audio is BirdCLEF+ 2026 competition data; the synthetic clips were generated for the rare classes."
+        }
+      ],
       "demo_note": null,
       "claims": [
         {
@@ -443,8 +470,13 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": "Bar chart of training images per class, classes a to q, after preprocessing and augmentation: one class has far more images than the others, and most classes are topped up to the same smaller count",
-      "visual_caption": "The training set after preprocessing and augmentation.",
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/cell-culture-classification/01438f7252af779d77a3bc2afa5e2132837d7679/figures/class_distribution.png",
+          "alt": "Bar chart of training images per class, classes a to q, after preprocessing and augmentation: one class has far more images than the others, and most classes are topped up to the same smaller count",
+          "caption": "The training set after preprocessing and augmentation."
+        }
+      ],
       "demo_note": null,
       "claims": [
         {
@@ -484,8 +516,7 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": null,
-      "visual_caption": null,
+      "visuals": [],
       "demo_note": null,
       "claims": [
         {
@@ -530,8 +561,7 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": null,
-      "visual_caption": null,
+      "visuals": [],
       "demo_note": null,
       "claims": [
         {
@@ -571,8 +601,13 @@
         "space": null,
         "extra": []
       },
-      "visual_alt": "Line chart of the detected morning peak start at one stop, day by day from March to May 2024, moving between about a quarter to six and twenty to seven, with rainy days marked",
-      "visual_caption": "Detected peak start over time at one stop. Figure by Saurabh Jyala (Role E: evaluation and visualisation), from the group's repository.",
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/transit-peak-hour-drift-detection/35b56df30fd9a8d2749ad8746cb667e337533ac8/figures/role_E_polished/E2_peak_boundary_over_time_polished.png",
+          "alt": "Line chart of the detected morning peak start at one stop, day by day from March to May 2024, moving between about a quarter to six and twenty to seven, with rainy days marked",
+          "caption": "Detected peak start over time at one stop. A figure by Role E (evaluation and visualisation) in the group's repository."
+        }
+      ],
       "demo_note": "charts: detected peak starts, drift tests, timetable gaps",
       "claims": [
         {
@@ -623,8 +658,7 @@
           }
         ]
       },
-      "visual_alt": null,
-      "visual_caption": null,
+      "visuals": [],
       "demo_note": null,
       "claims": []
     }
