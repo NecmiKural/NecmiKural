@@ -12,7 +12,8 @@
   "links": [
     {
       "label": "GitHub",
-      "url": "https://github.com/NecmiKural"
+      "url": "https://github.com/NecmiKural",
+      "icon": "assets/icons/github.svg"
     },
     {
       "label": "LinkedIn",

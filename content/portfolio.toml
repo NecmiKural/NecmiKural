@@ -19,6 +19,7 @@ banner_alt = "Necmi Kural in dot-matrix lettering, beside three cassettes labell
 [[link]]
 label = "GitHub"
 url = "https://github.com/NecmiKural"
+icon = "assets/icons/github.svg"
 show = true
 
 [[link]]
