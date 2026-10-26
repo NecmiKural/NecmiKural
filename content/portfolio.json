@@ -533,15 +533,15 @@
         "repo": "https://github.com/NecmiKural/streaming-ensemble-classifier",
         "release": null,
         "results": null,
-        "visual": "https://raw.githubusercontent.com/NecmiKural/streaming-ensemble-classifier/006a597d176c00e83bae45eda6992fc0ca68cb3b/figures/tournament_score.png",
+        "visual": "https://raw.githubusercontent.com/NecmiKural/streaming-ensemble-classifier/dcf2aa524ff63379ed2cd62c2529ed8bd5c7fad4/figures/tournament_score.png",
         "demo": null,
         "space": null,
         "extra": []
       },
       "visuals": [
         {
-          "url": "https://raw.githubusercontent.com/NecmiKural/streaming-ensemble-classifier/006a597d176c00e83bae45eda6992fc0ca68cb3b/figures/tournament_score.png",
-          "alt": "Horizontal bar chart of tournament scores on the synthetic stream: Naive Bayes 0.609, the spec ensemble 0.841, the champion as submitted 0.964 with its trees never capped and over the memory limit, and the fixed champion 0.905 at 234 KB, under the 250 KB budget",
+          "url": "https://raw.githubusercontent.com/NecmiKural/streaming-ensemble-classifier/dcf2aa524ff63379ed2cd62c2529ed8bd5c7fad4/figures/tournament_score.png",
+          "alt": "Horizontal bar chart of tournament scores on the synthetic stream: Naive Bayes 0.6087, the spec ensemble 0.8407, the champion as submitted 0.9642 with its trees never capped and over the memory limit, and the fixed champion 0.9048 at 234 KB, under the 250 KB budget",
           "caption": "The submitted champion scored higher because its trees were never capped; the fixed one stays under the 250 KB budget."
         }
       ],
@@ -584,15 +584,15 @@
         "repo": "https://github.com/NecmiKural/knn-data-streams",
         "release": null,
         "results": null,
-        "visual": "https://raw.githubusercontent.com/NecmiKural/knn-data-streams/b2bc061437aa09eb066290206edce75a99bc1bb4/figures/accuracy.png",
+        "visual": "https://raw.githubusercontent.com/NecmiKural/knn-data-streams/ed36d43eea1c3c36b7cd4f77622cc7b5ac1d3810/figures/accuracy.png",
         "demo": null,
         "space": null,
         "extra": []
       },
       "visuals": [
         {
-          "url": "https://raw.githubusercontent.com/NecmiKural/knn-data-streams/b2bc061437aa09eb066290206edce75a99bc1bb4/figures/accuracy.png",
-          "alt": "Grouped bar chart of accuracy for base kNN, class-weighted and age-aware windows, at window sizes 100 and 500 and k of 3 and 21, on the electricity stream and an RBF stream with drift; on RBF with a 100-instance window and k of 3 the class-weighted variant scores 85 percent against 67 for the other two",
+          "url": "https://raw.githubusercontent.com/NecmiKural/knn-data-streams/ed36d43eea1c3c36b7cd4f77622cc7b5ac1d3810/figures/accuracy.png",
+          "alt": "Grouped bar chart of accuracy for base kNN, class-weighted and age-aware windows, at window sizes 100 and 500 and k of 3 and 21, on the electricity stream and an RBF stream with drift; on RBF with a 100-instance window and k of 3 the class-weighted variant scores 85.4 percent against 66.7 and 66.9 for the other two",
           "caption": "Accuracy on the first 50,000 instances of each stream, single runs from results.csv. In these runs the class-weighted variant held up best with small windows."
         }
       ],
