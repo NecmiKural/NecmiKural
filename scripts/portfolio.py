@@ -199,6 +199,17 @@ def validate(data: dict) -> list[str]:
         refs = [p.get("ref")] if p.get("release") or claims(p) or p.get("results") else []
         refs += [c["ref"] for c in claims(p) if "ref" in c]
         refs += [p["visual"]["ref"]] if "ref" in p.get("visual", {}) else []
+        visual = p.get("visual")
+        if visual is not None:
+            # A file in the project's own repo, pinned to a commit, described for screen readers.
+            if not re.fullmatch(r"[\w./-]+\.(svg|png|gif)", visual.get("src", "")):
+                bad("visual src must be a path to an .svg, .png or .gif file in the repo")
+            if not re.fullmatch(r"[0-9a-f]{40}", visual.get("ref", "")):
+                bad("visual ref must be a 40-hex commit SHA")
+            if not visual.get("alt"):
+                bad("visual alt missing")
+            if len(visual.get("caption", "")) > 200:
+                bad("visual caption is over 200 characters")
         for ref in refs:
             if not REF.fullmatch(ref or ""):
                 bad(f"ref {ref!r} must be a tag vX.Y.Z or a 40-hex SHA")
@@ -282,6 +293,7 @@ def project_json(p: dict) -> dict:
         },
         "urls": urls(p),
         "visual_alt": p.get("visual", {}).get("alt"),
+        "visual_caption": p.get("visual", {}).get("caption"),
         "demo_note": p.get("demo_note"),
         "claims": [
             {"lead": c.get("lead"), "text": c["text"], "source": source(p, c)[0]} for c in claims(p)
