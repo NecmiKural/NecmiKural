@@ -216,6 +216,7 @@ course = "Deep Learning (COMPX525)"
 short = "Synthetic clips for rare bird classes, tested"
 card = "Tests whether AudioLDM2 synthetic clips for rare classes help two classifiers: BirdNET embeddings with a linear classifier, and a CNN trained from scratch on mel-spectrograms. The clips helped the first and hurt the second."
 stack = ["Python", "PyTorch", "BirdNET", "AudioLDM2", "scikit-learn"]
+extra = [{ label = "Kaggle notebook", url = "https://www.kaggle.com/code/necmikural/birdclef-2026-synthetic-enrichment-summary" }]
 
   [[project.claim]]
   text = '''BirdNET embeddings + ML reach 0.8940 validation macro ROC-AUC with synthetic enrichment and 0.8869 without, on one fixed 80/20 split of train_audio with one seed. This is not a Kaggle leaderboard score.'''

@@ -387,7 +387,12 @@
         "visual": null,
         "demo": null,
         "space": null,
-        "extra": []
+        "extra": [
+          {
+            "label": "Kaggle notebook",
+            "url": "https://www.kaggle.com/code/necmikural/birdclef-2026-synthetic-enrichment-summary"
+          }
+        ]
       },
       "visual_alt": null,
       "demo_note": null,
