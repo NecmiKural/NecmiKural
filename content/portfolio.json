@@ -295,12 +295,28 @@
         "repo": "https://github.com/NecmiKural/sofra",
         "release": null,
         "results": null,
-        "visual": null,
+        "visual": "https://raw.githubusercontent.com/NecmiKural/sofra/0907cb850e11f9be7d7a5e39d371027eb914dfb0/docs/screenshots/guest-menu-from-table-qr.png",
         "demo": "https://sofra-demo.onrender.com",
         "space": null,
         "extra": []
       },
-      "visuals": [],
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/sofra/0907cb850e11f9be7d7a5e39d371027eb914dfb0/docs/screenshots/guest-menu-from-table-qr.png",
+          "alt": "Phone screenshot of the Café Sofra guest menu opened from Table 4's QR link, in English: a Table 4 badge, a TR and EN language switch, category chips, breakfast dishes with prices in TRY, prep times and vegetarian tags, and a bottom bar with Call waiter, Request bill and Table orders",
+          "caption": "The guest menu, opened from a table's QR code. Screenshots from a local run on the seed data."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/sofra/0907cb850e11f9be7d7a5e39d371027eb914dfb0/docs/screenshots/guest-split-bill.png",
+          "alt": "Phone screenshot of Table 4's orders sheet: a pending order of TRY 1,025 with TRY 341.67 paid and TRY 683.33 remaining, buttons to pay it all, split the bill or enter an amount, and the split set to 2 people at TRY 341.67 each",
+          "caption": "Splitting the bill after one diner has paid a share, through the demo payment provider."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/sofra/0907cb850e11f9be7d7a5e39d371027eb914dfb0/docs/screenshots/staff-live-panel.png",
+          "alt": "Desktop screenshot of the staff live panel in three columns: table requests (a waiter call and a bill request), three incoming orders listed in Turkish with Preparing and Done buttons, and a paid payment from Table 4",
+          "caption": "The staff live panel: table requests, incoming orders and payments as they arrive."
+        }
+      ],
       "demo_note": "free tier; the first load can take about a minute",
       "claims": [
         {
@@ -333,12 +349,18 @@
         "repo": "https://github.com/NecmiKural/copass",
         "release": null,
         "results": null,
-        "visual": null,
+        "visual": "https://raw.githubusercontent.com/NecmiKural/copass/a66fc887075223f608733d15d4ca3ac79a3ec341/docs/demo.png",
         "demo": null,
         "space": null,
         "extra": []
       },
-      "visuals": [],
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/copass/a66fc887075223f608733d15d4ca3ac79a3ec341/docs/demo.png",
+          "alt": "Terminal window: copass --no-copy finds a Claude Code session about cursor pagination that stopped at its usage limit and reports a hand-over ready, with 3 requests, 3 changed files, 2 commands and a plan at step 1 of 3, saved to .copass/latest.md; a second command prints the agent's plan with its current focus and the user's last request, marked as not answered",
+          "caption": "A real run on synthetic session logs: the hand-over copass writes when an agent stops at its usage limit."
+        }
+      ],
       "demo_note": null,
       "claims": [
         {
@@ -511,12 +533,18 @@
         "repo": "https://github.com/NecmiKural/streaming-ensemble-classifier",
         "release": null,
         "results": null,
-        "visual": null,
+        "visual": "https://raw.githubusercontent.com/NecmiKural/streaming-ensemble-classifier/006a597d176c00e83bae45eda6992fc0ca68cb3b/figures/tournament_score.png",
         "demo": null,
         "space": null,
         "extra": []
       },
-      "visuals": [],
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/streaming-ensemble-classifier/006a597d176c00e83bae45eda6992fc0ca68cb3b/figures/tournament_score.png",
+          "alt": "Horizontal bar chart of tournament scores on the synthetic stream: Naive Bayes 0.609, the spec ensemble 0.841, the champion as submitted 0.964 with its trees never capped and over the memory limit, and the fixed champion 0.905 at 234 KB, under the 250 KB budget",
+          "caption": "The submitted champion scored higher only because its trees were never capped; the fixed one stays under the 250 KB budget."
+        }
+      ],
       "demo_note": null,
       "claims": [
         {
@@ -556,12 +584,18 @@
         "repo": "https://github.com/NecmiKural/knn-data-streams",
         "release": null,
         "results": null,
-        "visual": null,
+        "visual": "https://raw.githubusercontent.com/NecmiKural/knn-data-streams/b2bc061437aa09eb066290206edce75a99bc1bb4/figures/accuracy.png",
         "demo": null,
         "space": null,
         "extra": []
       },
-      "visuals": [],
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/knn-data-streams/b2bc061437aa09eb066290206edce75a99bc1bb4/figures/accuracy.png",
+          "alt": "Grouped bar chart of accuracy for base kNN, class-weighted and age-aware windows, at window sizes 100 and 500 and k of 3 and 21, on the electricity stream and an RBF stream with drift; on RBF with a 100-instance window and k of 3 the class-weighted variant scores 85 percent against 67 for the other two",
+          "caption": "Accuracy on the first 50,000 instances of each stream, from results.csv. Per-class windows hold up when the shared window is small."
+        }
+      ],
       "demo_note": null,
       "claims": [
         {
