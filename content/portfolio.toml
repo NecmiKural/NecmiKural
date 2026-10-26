@@ -194,7 +194,7 @@ status = "show"
 short = "Hand-over between AI coding agents, no network"
 card = "A Node.js CLI that reads one AI coding agent's local session logs and writes a hand-over for another: the task, your constraints quoted verbatim, the work done, the unanswered request and the current git state. Credentials are redacted, and the README marks which agent adapters were checked against real logs."
 stack = ["Node.js"]
-visual = { src = "docs/demo.png", ref = "a66fc887075223f608733d15d4ca3ac79a3ec341", alt = "Terminal window: copass --no-copy finds a Claude Code session about cursor pagination that stopped at its usage limit and reports a hand-over ready, with 3 requests, 3 changed files, 2 commands and a plan at step 1 of 3, saved to .copass/latest.md; a second command prints the agent's plan with its current focus and the user's last request, marked as not answered", caption = "A real run on synthetic session logs: the hand-over copass writes when an agent stops at its usage limit." }
+visual = { src = "docs/demo.png", ref = "a66fc887075223f608733d15d4ca3ac79a3ec341", alt = "Terminal window: copass --no-copy finds a Claude Code session about cursor pagination that stopped at its usage limit and reports a hand-over ready, with 3 requests, 3 changed files, 2 commands and a plan with 1 of 3 steps done, saved to .copass/latest.md; a second command prints the agent's plan with its current focus and the user's last request, marked as not answered", caption = "A real run on synthetic session logs: the hand-over copass writes when an agent stops at its usage limit." }
 
   [[project.claim]]
   text = '''It makes no network calls, spends no tokens, needs no daemon, and has no dependencies beyond Node.js.'''
@@ -259,7 +259,7 @@ course = "Machine Learning for Data Streams (COMPX523)"
 short = "Online ensemble under a 250 KB memory budget"
 card = "An online ensemble classifier for a drifting, imbalanced stream under a hard 250 KB memory budget, with a post-mortem of the memory-measurement bugs that put the submitted version over the limit, and a re-run with the cap enforced."
 stack = ["Python", "CapyMOA", "MOA"]
-visual = { src = "figures/tournament_score.png", ref = "006a597d176c00e83bae45eda6992fc0ca68cb3b", alt = "Horizontal bar chart of tournament scores on the synthetic stream: Naive Bayes 0.609, the spec ensemble 0.841, the champion as submitted 0.964 with its trees never capped and over the memory limit, and the fixed champion 0.905 at 234 KB, under the 250 KB budget", caption = "The submitted champion scored higher only because its trees were never capped; the fixed one stays under the 250 KB budget." }
+visual = { src = "figures/tournament_score.png", ref = "006a597d176c00e83bae45eda6992fc0ca68cb3b", alt = "Horizontal bar chart of tournament scores on the synthetic stream: Naive Bayes 0.609, the spec ensemble 0.841, the champion as submitted 0.964 with its trees never capped and over the memory limit, and the fixed champion 0.905 at 234 KB, under the 250 KB budget", caption = "The submitted champion scored higher because its trees were never capped; the fixed one stays under the 250 KB budget." }
 
   [[project.claim]]
   lead = "After the fix:"
@@ -279,7 +279,7 @@ course = "Machine Learning for Data Streams (COMPX523)"
 short = "Online kNN with three window strategies"
 card = "Online kNN classifiers for evolving data streams with three window strategies: one global window, one window per class, and age-weighted ejection. Single runs per setting."
 stack = ["Python", "CapyMOA", "MOA"]
-visual = { src = "figures/accuracy.png", ref = "b2bc061437aa09eb066290206edce75a99bc1bb4", alt = "Grouped bar chart of accuracy for base kNN, class-weighted and age-aware windows, at window sizes 100 and 500 and k of 3 and 21, on the electricity stream and an RBF stream with drift; on RBF with a 100-instance window and k of 3 the class-weighted variant scores 85 percent against 67 for the other two", caption = "Accuracy on the first 50,000 instances of each stream, from results.csv. Per-class windows hold up when the shared window is small." }
+visual = { src = "figures/accuracy.png", ref = "b2bc061437aa09eb066290206edce75a99bc1bb4", alt = "Grouped bar chart of accuracy for base kNN, class-weighted and age-aware windows, at window sizes 100 and 500 and k of 3 and 21, on the electricity stream and an RBF stream with drift; on RBF with a 100-instance window and k of 3 the class-weighted variant scores 85 percent against 67 for the other two", caption = "Accuracy on the first 50,000 instances of each stream, single runs from results.csv. In these runs the class-weighted variant held up best with small windows." }
 
   [[project.claim]]
   text = '''On the imbalanced/drifting RBF stream, plain kNN with a small window collapsed to ~66%, while per-class windows held at ~85%'''
