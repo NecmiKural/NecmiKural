@@ -696,5 +696,55 @@
       "demo_note": null,
       "claims": []
     }
+  ],
+  "try": [
+    {
+      "name": "recon-replay",
+      "url": "https://huggingface.co/spaces/necmikural/recon-replay",
+      "kind": "Space",
+      "project": "bank-reconciliation-agent",
+      "see": "Recorded agent runs, replayed line by line: each decision, its policy check and the outcome.",
+      "note": "Recorded runs, synthetic data, no key"
+    },
+    {
+      "name": "provenance-rag-evidence",
+      "url": "https://huggingface.co/spaces/necmikural/provenance-rag-evidence",
+      "kind": "Space",
+      "project": "provenance-tiered-rag",
+      "see": "Recorded answers with the dated passages they cite, including questions with planted injection notes.",
+      "note": "Recorded answers, no key"
+    },
+    {
+      "name": "transit-peak-hours",
+      "url": "https://huggingface.co/spaces/necmikural/transit-peak-hours",
+      "kind": "Space",
+      "project": "transit-peak-hour-drift-detection",
+      "see": "When rush hour really starts at the stops shown, against the official window, with the drift tests.",
+      "note": "Historical open data (SUNT, CC BY 4.0)"
+    },
+    {
+      "name": "provenance-rag-evals",
+      "url": "https://huggingface.co/datasets/necmikural/provenance-rag-evals",
+      "kind": "Dataset",
+      "project": "provenance-tiered-rag",
+      "see": "The frozen questions and planted payloads the RAG system is scored on, browsable by body of law.",
+      "note": "MIT licence, in the dataset viewer"
+    },
+    {
+      "name": "BirdCLEF summary notebook",
+      "url": "https://www.kaggle.com/code/necmikural/birdclef-2026-synthetic-enrichment-summary",
+      "kind": "Notebook",
+      "project": "birdclef-2026-audio-classification",
+      "see": "The question, the design and the rare-class results on one page, with the code that made them.",
+      "note": "Reading needs no Kaggle account"
+    },
+    {
+      "name": "sofra demo",
+      "url": "https://sofra-demo.onrender.com",
+      "kind": "Live app",
+      "project": "sofra",
+      "see": "A demo café: the guest menu from a table link, and the staff panel with a public demo login.",
+      "note": "Demo data; on a free tier, the first load can take about a minute"
+    }
   ]
 }

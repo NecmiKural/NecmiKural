@@ -153,8 +153,41 @@ def claims(p: dict) -> list[dict]:
     return p.get("claim", [])
 
 
-def validate(data: dict) -> list[str]:
+TRY_KINDS = ("Space", "Dataset", "Notebook", "Live app")
+
+
+def validate_try(data: dict) -> list[str]:
+    """The "Try it" list: working things a visitor can open, each tied to a shown project."""
     errors = []
+    projects = {p["id"]: p for p in shown(data)}
+    for t in data.get("try", []):
+        bad = lambda msg, name=t.get("name", "?"): errors.append(f"try {name}: {msg}")
+        for key in ("name", "url", "kind", "project", "see"):
+            if not t.get(key):
+                bad(f"{key} missing")
+        if not t.get("url", "").startswith("https://"):
+            bad("url must be https")
+        if t.get("kind") not in TRY_KINDS:
+            bad(f"kind must be one of {TRY_KINDS}")
+        if len(t.get("see", "")) > 120:
+            bad("see is over 120 characters")
+        p = projects.get(t.get("project"))
+        if p is None:
+            bad("project must be the id of a shown project")
+            continue
+        missing = numbers(t.get("see", "")) | numbers(t.get("note", ""))
+        missing -= set().union(*(numbers(c["text"]) for c in claims(p)))
+        if missing:
+            bad(f"numbers not found in {p['id']}'s claims: {sorted(missing)}")
+        words = f"{t.get('see', '')} {t.get('note', '')}"
+        for b in p.get("banned", ()):
+            if phrase(b).search(words):
+                bad(f"uses {b!r}, which {p['id']} bans")
+    return errors
+
+
+def validate(data: dict) -> list[str]:
+    errors = validate_try(data)
     if data.get("schema") != 1:
         errors.append("schema must be 1")
     need = ("name", "headline", "education", "location", "availability", "provenance")
@@ -314,6 +347,10 @@ def portfolio_json(data: dict) -> str:
             {k: x[k] for k in ("label", "url", "icon") if k in x} for x in data["link"] if x["show"]
         ],
         "projects": [project_json(p) for p in shown(data)],
+        "try": [
+            {k: t.get(k) for k in ("name", "url", "kind", "project", "see", "note")}
+            for t in data.get("try", [])
+        ],
     }
     return json.dumps(doc, indent=2, ensure_ascii=False) + "\n"
 
@@ -660,6 +697,23 @@ def selftest() -> None:
         "x: numbers not found in any of its claims: ['31']"
     ]
     assert validate(data | {"project": [project | {"ref": "main"}]})[0].startswith("x: ref 'main'")
+    item = {"name": "t", "url": "https://x.org", "kind": "Space", "project": "x", "see": "27 runs"}
+    assert validate(data | {"try": [item]}) == []
+    assert validate(data | {"try": [item | {"see": "31 runs"}]}) == [
+        "try t: numbers not found in x's claims: ['31']"
+    ]
+    for change, error in (
+        ({"note": "since 31"}, "numbers not found in x's claims: ['31']"),
+        ({"url": "http://x.org"}, "url must be https"),
+        ({"see": "x" * 121}, "see is over 120 characters"),
+    ):
+        assert validate(data | {"try": [item | change]}) == [f"try t: {error}"], change
+    banned = data | {"project": [project | {"banned": ["live"]}], "try": [item | {"see": "Live charts"}]}
+    assert validate(banned) == ["try t: uses 'live', which x bans"]
+    assert validate(data | {"try": [item | {"project": "y", "kind": "Demo"}]}) == [
+        f"try t: kind must be one of {TRY_KINDS}",
+        "try t: project must be the id of a shown project",
+    ]
     real = load()
     assert outputs(real) == outputs(real), "build must be deterministic"
     assert all(len(banner(real, t).encode()) < 15_000 for t in PALETTES), "a banner is over 15 KB"
