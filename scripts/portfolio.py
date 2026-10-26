@@ -414,25 +414,56 @@ def dot_paths(text: str, x0: int, y0: int, cell: int, size: int) -> tuple[str, s
     return "".join(lit), "".join(unlit)
 
 
-def cassette(x: int, y: int, label: str, first: bool, pal: dict) -> str:
+def glass(kind: int, x: int, first: bool, pal: dict) -> str:
+    """One piece of glassware in a 128-wide slot standing on the bench at y=172: a flask, a
+    beaker or a rack of test tubes. The first holds the accent colour and gives off bubbles."""
     ink, muted = pal["ink"], pal["muted"]
-    fill = f'fill="{pal["accent"]}"' if first else f'fill="{muted}" fill-opacity="0.25"'
-    width = (6 * len(label) - 1) * 2
-    letters, _ = dot_paths(label, x + 10 + (108 - width) // 2, y + 16, 2, 2)
-    return "".join(
-        [
-            f'<rect x="{x}" y="{y}" width="128" height="84" rx="8" fill="none" stroke="{ink}" stroke-width="3"/>',
-            f'<rect x="{x + 10}" y="{y + 10}" width="108" height="26" rx="3" {fill}/>',
-            f'<path fill="{pal["on_accent"] if first else ink}" d="{letters}"/>',
-            f'<rect x="{x + 30}" y="{y + 44}" width="68" height="18" rx="9" fill="none" stroke="{muted}" stroke-width="2"/>',
-            *(
-                f'<circle cx="{cx}" cy="{y + 53}" r="6" fill="none" stroke="{ink}" stroke-width="2"/>'
-                f'<circle cx="{cx}" cy="{y + 53}" r="2" fill="{ink}"/>'
-                for cx in (x + 44, x + 84)
-            ),
-            f'<path d="M{x + 22} {y + 84}L{x + 30} {y + 68}H{x + 98}L{x + 106} {y + 84}" fill="none" stroke="{muted}" stroke-width="2"/>',
-            *(f'<circle cx="{cx}" cy="{y + 76}" r="2" fill="{muted}"/>' for cx in (x + 48, x + 80)),
+    liquid = f'fill="{pal["accent"]}"' if first else f'fill="{muted}" fill-opacity="0.3"'
+    line = f'fill="none" stroke="{ink}" stroke-width="3" stroke-linejoin="round"'
+    if kind == 0:  # Erlenmeyer flask
+        parts = [
+            f'<path {liquid} d="M{x + 36} 126H{x + 92}L{x + 110} 166H{x + 18}z"/>',
+            f'<path {line} d="M{x + 52} 44V84L{x + 14} 168Q{x + 14} 172 {x + 18} 172H{x + 110}'
+            f'Q{x + 114} 172 {x + 114} 168L{x + 76} 84V44M{x + 46} 44H{x + 82}"/>',
         ]
+    elif kind == 1:  # beaker with a spout and graduations
+        parts = [
+            f'<rect x="{x + 35}" y="112" width="58" height="57" {liquid}/>',
+            f'<path {line} d="M{x + 24} 46L{x + 32} 54V164Q{x + 32} 172 {x + 40} 172H{x + 88}'
+            f'Q{x + 96} 172 {x + 96} 164V52M{x + 92} 52H{x + 100}"/>',
+            *(
+                f'<path d="M{x + 32} {y}H{x + 44}" stroke="{muted}" stroke-width="2"/>'
+                for y in (76, 96, 116, 136)
+            ),
+        ]
+    else:  # three test tubes in a rack
+        parts = []
+        for i, top in enumerate((96, 120, 108)):
+            tx = x + 30 + i * 26
+            parts += [
+                f'<path {liquid} d="M{tx + 3} {top}H{tx + 13}V{150}Q{tx + 13} 155 {tx + 8} 155'
+                f'Q{tx + 3} 155 {tx + 3} 150z"/>',
+                f'<path {line} d="M{tx} 64V150Q{tx} 158 {tx + 8} 158Q{tx + 16} 158 {tx + 16} 150V64"/>',
+            ]
+        parts.append(
+            f'<path {line} d="M{x + 16} 124H{x + 112}M{x + 22} 124V172M{x + 106} 124V172"/>'
+        )
+    if first:  # pixel bubbles rising from the flask
+        parts += [
+            f'<rect x="{bx}" y="{by}" width="{w}" height="{w}" fill="{pal["accent"]}"/>'
+            for bx, by, w in ((x + 61, 30, 6), (x + 70, 18, 4), (x + 58, 8, 4))
+        ]
+    return "".join(parts)
+
+
+def plate(x: int, label: str, first: bool, pal: dict) -> str:
+    """A sample label on the bench edge, in the 5x7 glyphs at 2 px a dot."""
+    fill = f'fill="{pal["accent"]}"' if first else f'fill="{pal["muted"]}" fill-opacity="0.25"'
+    width = (6 * len(label) - 1) * 2
+    letters, _ = dot_paths(label, x + (128 - width) // 2, 188, 2, 2)
+    return (
+        f'<rect x="{x + 20}" y="180" width="88" height="30" rx="3" {fill}/>'
+        f'<path fill="{pal["on_accent"] if first else pal["ink"]}" d="{letters}"/>'
     )
 
 
@@ -440,15 +471,16 @@ def banner(data: dict, theme: str) -> str:
     pal = PALETTES[theme]
     lit, unlit = dot_paths(data["profile"]["name"].upper(), 48, 85, 10, 8)
     labels = [p["label"] for p in data["project"] if p["group"] == "flagship"][:3]
-    tapes = "".join(
-        cassette(760 + i * 144, 78, label, i == 0, pal) for i, label in enumerate(labels)
+    bench = "".join(
+        glass(i, 760 + i * 144, i == 0, pal) + plate(760 + i * 144, label, i == 0, pal)
+        for i, label in enumerate(labels)
     )
     return (
         '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="240" viewBox="0 0 1200 240"'
         f' role="img" aria-labelledby="title"><title id="title">{attr(data["profile"]["banner_alt"])}</title>'
         f'<path fill="{pal["muted"]}" fill-opacity="0.12" d="{unlit}"/>'
-        f'<path fill="{pal["ink"]}" d="{lit}"/>{tapes}'
-        f'<path d="M752 172H1184" stroke="{pal["muted"]}" stroke-width="2"/></svg>\n'
+        f'<path fill="{pal["ink"]}" d="{lit}"/>{bench}'
+        f'<path d="M752 173H1184" stroke="{pal["ink"]}" stroke-width="3"/></svg>\n'
     )
 
 

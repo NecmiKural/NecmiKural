@@ -2,7 +2,7 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg">
-  <img src="assets/banner-light.svg" width="1200" alt="Necmi Kural in dot-matrix lettering, beside three cassettes labelled RECON, RAG and MCP">
+  <img src="assets/banner-light.svg" width="1200" alt="Necmi Kural in dot-matrix lettering, beside a lab bench with a flask, a beaker and a rack of test tubes labelled RECON, RAG and MCP">
 </picture>
 
 **Necmi Kural.** Software engineer. I build tool-calling agents and retrieval systems, and measure them with evaluations that replay from recorded runs.<br>
