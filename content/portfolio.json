@@ -34,6 +34,10 @@
       "label": "Kaggle",
       "url": "https://www.kaggle.com/necmikural",
       "icon": "assets/icons/kaggle.svg"
+    },
+    {
+      "label": "CV (PDF)",
+      "url": "https://github.com/NecmiKural/NecmiKural/blob/main/cv/necmi-kural-cv.pdf"
     }
   ],
   "projects": [

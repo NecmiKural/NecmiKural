@@ -49,7 +49,7 @@ show = true
 [[link]]
 label = "CV (PDF)"
 url = "https://github.com/NecmiKural/NecmiKural/blob/main/cv/necmi-kural-cv.pdf"
-show = false
+show = true
 
 # ---------- flagships ----------
 
