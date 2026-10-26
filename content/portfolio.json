@@ -547,12 +547,12 @@
         "release": null,
         "results": null,
         "visual": null,
-        "demo": null,
+        "demo": "https://huggingface.co/spaces/necmikural/transit-peak-hours",
         "space": null,
         "extra": []
       },
       "visual_alt": null,
-      "demo_note": null,
+      "demo_note": "charts: detected peak starts, drift tests, timetable gaps",
       "claims": [
         {
           "lead": null,

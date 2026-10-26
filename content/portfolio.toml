@@ -282,6 +282,8 @@ role = "Role D: adaptive boundary detector, ADWIN and Page-Hinkley drift tests, 
 short = "Peak-hour boundaries and drift at bus stops"
 card = "Online detection of when each bus stop's morning and evening peaks really start and end, with drift tests and a comparison against the published timetable."
 stack = ["Python", "CapyMOA", "pandas"]
+demo = "https://huggingface.co/spaces/necmikural/transit-peak-hours"
+demo_note = "charts: detected peak starts, drift tests, timetable gaps"
 banned = ["live", "seasonal drift", "bus-boarding streams"]
 
   [[project.claim]]
