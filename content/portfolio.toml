@@ -127,14 +127,14 @@ demo_note = "evidence viewer: recorded answers with their dated sources, no key"
 id = "mcp-code-mode"
 title = "mcp-code-mode"
 repo = "NecmiKural/mcp-code-mode"
-ref = "v0.1.0"
+ref = "v0.2.0"
 release = true
 group = "flagship"
 status = "show"
 label = "MCP"
 short = "Code mode for any MCP server, in Python"
 pitch = "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox, through a host-side bridge that checks every call."
-card = "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox. It serves a wrapped server's tools to the model as one run_python tool. Every call passes a host-side bridge that checks the allowlist, the tool's JSON Schema, argument size and a call budget, and refuses oversized results. Extracted from bank-reconciliation-agent; the README maps each threat to a control and a test, and lists what it does not protect."
+card = "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox. It serves one or several wrapped servers' tools to the model as one run_python tool, and code can search them when the list is too long to read. Every call passes a host-side bridge that checks the allowlist, the tool's JSON Schema, argument size and a call budget, and refuses oversized results. Once code calls a tool marked private, only private tools can be called. Extracted from bank-reconciliation-agent; the README maps each threat to a control and a test, and lists what it does not protect."
 stack = ["Python", "MCP", "Docker"]
 results = "README.md#threat-model"
 visual = { src = "docs/demo.svg", ref = "0c2e9e84d1451f539927dae2c334266710a27923", alt = "Terminal capture: a program calls two allowlisted toy tools through the bridge, then builds a call to a tool off the allowlist, which the bridge refuses before the server sees it" }

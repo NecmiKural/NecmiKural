@@ -175,16 +175,16 @@
       "title": "mcp-code-mode",
       "group": "flagship",
       "label": "MCP",
-      "ref": "v0.1.0",
+      "ref": "v0.2.0",
       "short": "Code mode for any MCP server, in Python",
       "pitch": "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox, through a host-side bridge that checks every call.",
-      "card": "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox. It serves a wrapped server's tools to the model as one run_python tool. Every call passes a host-side bridge that checks the allowlist, the tool's JSON Schema, argument size and a call budget, and refuses oversized results. Extracted from bank-reconciliation-agent; the README maps each threat to a control and a test, and lists what it does not protect.",
+      "card": "Run model-written Python against any MCP server's tools in a locked-down Docker sandbox. It serves one or several wrapped servers' tools to the model as one run_python tool, and code can search them when the list is too long to read. Every call passes a host-side bridge that checks the allowlist, the tool's JSON Schema, argument size and a call budget, and refuses oversized results. Once code calls a tool marked private, only private tools can be called. Extracted from bank-reconciliation-agent; the README maps each threat to a control and a test, and lists what it does not protect.",
       "stack": [
         "Python",
         "MCP",
         "Docker"
       ],
-      "byline": "Personal project · v0.1.0",
+      "byline": "Personal project · v0.2.0",
       "flags": {
         "synthetic_data": false,
         "course": null,
@@ -193,8 +193,8 @@
       },
       "urls": {
         "repo": "https://github.com/NecmiKural/mcp-code-mode",
-        "release": "https://github.com/NecmiKural/mcp-code-mode/releases/tag/v0.1.0",
-        "results": "https://github.com/NecmiKural/mcp-code-mode/blob/v0.1.0/README.md#threat-model",
+        "release": "https://github.com/NecmiKural/mcp-code-mode/releases/tag/v0.2.0",
+        "results": "https://github.com/NecmiKural/mcp-code-mode/blob/v0.2.0/README.md#threat-model",
         "visual": "https://raw.githubusercontent.com/NecmiKural/mcp-code-mode/0c2e9e84d1451f539927dae2c334266710a27923/docs/demo.svg",
         "demo": null,
         "space": null,
@@ -212,7 +212,7 @@
         {
           "lead": "Where it was measured, in bank-reconciliation-agent:",
           "text": "containment held in every run and every probe, and code mode was cheaper on average, but the pre-registered efficiency hypothesis failed for both models tested. Read the numbers there; this package carries no measurements of its own.",
-          "source": "https://github.com/NecmiKural/mcp-code-mode/blob/v0.1.0/README.md"
+          "source": "https://github.com/NecmiKural/mcp-code-mode/blob/v0.2.0/README.md"
         }
       ]
     },

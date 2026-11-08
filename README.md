@@ -41,15 +41,15 @@ Question answering over New Zealand GST law, German VAT law (UStG and UStDV) and
 [Release v0.3.0](https://github.com/NecmiKural/provenance-tiered-rag/releases/tag/v0.3.0) · [Results at v0.3.0](https://github.com/NecmiKural/provenance-tiered-rag/blob/v0.3.0/README.md) · [Demo](https://huggingface.co/spaces/necmikural/provenance-rag-evidence) (evidence viewer: recorded answers with their dated sources, no key)
 
 ### [mcp-code-mode](https://github.com/NecmiKural/mcp-code-mode)
-<sub>Personal project · v0.1.0 · Python, MCP, Docker</sub>
+<sub>Personal project · v0.2.0 · Python, MCP, Docker</sub>
 
-Run model-written Python against any MCP server's tools in a locked-down Docker sandbox. It serves a wrapped server's tools to the model as one run_python tool. Every call passes a host-side bridge that checks the allowlist, the tool's JSON Schema, argument size and a call budget, and refuses oversized results. Extracted from bank-reconciliation-agent; the README maps each threat to a control and a test, and lists what it does not protect.
+Run model-written Python against any MCP server's tools in a locked-down Docker sandbox. It serves one or several wrapped servers' tools to the model as one run_python tool, and code can search them when the list is too long to read. Every call passes a host-side bridge that checks the allowlist, the tool's JSON Schema, argument size and a call budget, and refuses oversized results. Once code calls a tool marked private, only private tools can be called. Extracted from bank-reconciliation-agent; the README maps each threat to a control and a test, and lists what it does not protect.
 
-- **Where it was measured, in bank-reconciliation-agent:** containment held in every run and every probe, and code mode was cheaper on average, but the pre-registered efficiency hypothesis failed for both models tested. Read the numbers there; this package carries no measurements of its own. <sup><a href="https://github.com/NecmiKural/mcp-code-mode/blob/v0.1.0/README.md">source: README at v0.1.0</a></sup>
+- **Where it was measured, in bank-reconciliation-agent:** containment held in every run and every probe, and code mode was cheaper on average, but the pre-registered efficiency hypothesis failed for both models tested. Read the numbers there; this package carries no measurements of its own. <sup><a href="https://github.com/NecmiKural/mcp-code-mode/blob/v0.2.0/README.md">source: README at v0.2.0</a></sup>
 
 <a href="https://github.com/NecmiKural/mcp-code-mode"><img src="https://raw.githubusercontent.com/NecmiKural/mcp-code-mode/0c2e9e84d1451f539927dae2c334266710a27923/docs/demo.svg" width="640" alt="Terminal capture: a program calls two allowlisted toy tools through the bridge, then builds a call to a tool off the allowlist, which the bridge refuses before the server sees it"></a>
 
-[Release v0.1.0](https://github.com/NecmiKural/mcp-code-mode/releases/tag/v0.1.0) · [Threat model at v0.1.0](https://github.com/NecmiKural/mcp-code-mode/blob/v0.1.0/README.md#threat-model)
+[Release v0.2.0](https://github.com/NecmiKural/mcp-code-mode/releases/tag/v0.2.0) · [Threat model at v0.2.0](https://github.com/NecmiKural/mcp-code-mode/blob/v0.2.0/README.md#threat-model)
 
 ## More work
 
