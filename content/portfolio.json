@@ -652,14 +652,141 @@
       ]
     },
     {
+      "id": "bivariate-circular-split-trees",
+      "title": "bivariate-circular-split-trees",
+      "group": "coursework",
+      "label": null,
+      "ref": "9360ac1c276ed5df0d3c01f0a2a21376fd7ca33e",
+      "short": "Decision trees that split on a circle over two attributes",
+      "pitch": null,
+      "card": "A split finder for WEKA decision trees that tests two numeric attributes at once with a circle, instead of one attribute with a threshold. Written in Java, with a numba-accelerated Python twin that builds identical trees; a brute-force oracle checks the split search.",
+      "stack": [
+        "Java",
+        "WEKA",
+        "Python",
+        "numba"
+      ],
+      "byline": "Coursework, University of Waikato · Decision tree algorithms · individual",
+      "flags": {
+        "synthetic_data": false,
+        "course": "Decision tree algorithms",
+        "team_size": null,
+        "role": null
+      },
+      "urls": {
+        "repo": "https://github.com/NecmiKural/bivariate-circular-split-trees",
+        "release": null,
+        "results": null,
+        "visual": "https://raw.githubusercontent.com/NecmiKural/bivariate-circular-split-trees/9360ac1c276ed5df0d3c01f0a2a21376fd7ca33e/figures/tree_sizes.png",
+        "demo": null,
+        "space": null,
+        "extra": []
+      },
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/bivariate-circular-split-trees/9360ac1c276ed5df0d3c01f0a2a21376fd7ca33e/figures/tree_sizes.png",
+          "alt": "Grouped bar chart on a log scale of tree size in nodes for univariate and circular bivariate splits on 16 datasets, from iris to phoneme; the circular bar is shorter on every dataset, most visibly on balance-scale, where it falls from about 290 nodes to about 100",
+          "caption": "Mean tree size per dataset in 10 by 10-fold cross-validation, on a log scale."
+        }
+      ],
+      "demo_note": null,
+      "claims": [
+        {
+          "lead": "Result:",
+          "text": "trees shrink by 45% on average and are significantly smaller on all 16 datasets, with no significant accuracy loss on any of them",
+          "source": "https://github.com/NecmiKural/bivariate-circular-split-trees/blob/9360ac1c276ed5df0d3c01f0a2a21376fd7ca33e/README.md"
+        }
+      ]
+    },
+    {
+      "id": "oblivious-decision-tables-mdl",
+      "title": "oblivious-decision-tables-mdl",
+      "group": "coursework",
+      "label": null,
+      "ref": "1fe348e8eaaf36ac984df1a1235838aa344de02c",
+      "short": "Decision tables from MDL-pruned oblivious trees",
+      "pitch": null,
+      "card": "A WEKA classifier in Java that learns decision tables by growing an oblivious decision tree level by level, with the minimum description length principle choosing each level's attribute and how many levels to keep. An independent Python oracle re-implements the learner and checks the Java output.",
+      "stack": [
+        "Java",
+        "WEKA",
+        "Python"
+      ],
+      "byline": "Coursework, University of Waikato · Decision tree algorithms · individual",
+      "flags": {
+        "synthetic_data": false,
+        "course": "Decision tree algorithms",
+        "team_size": null,
+        "role": null
+      },
+      "urls": {
+        "repo": "https://github.com/NecmiKural/oblivious-decision-tables-mdl",
+        "release": null,
+        "results": null,
+        "visual": "https://raw.githubusercontent.com/NecmiKural/oblivious-decision-tables-mdl/1fe348e8eaaf36ac984df1a1235838aa344de02c/figures/dl_curves.png",
+        "demo": null,
+        "space": null,
+        "extra": []
+      },
+      "visuals": [
+        {
+          "url": "https://raw.githubusercontent.com/NecmiKural/oblivious-decision-tables-mdl/1fe348e8eaaf36ac984df1a1235838aa344de02c/figures/dl_curves.png",
+          "alt": "Two line charts. Left: description length of the first 12 prefixes, relative to the single-leaf tree, for tic-tac-toe, car, nursery, kr-vs-kp, splice and lymph, each with a dot at the selected prefix, mostly at three levels and at ten for kr-vs-kp. Right: tic-tac-toe's description length split into attributes, class counts, labels and total; pre-pruning would stop after one level, but the total is lowest at three",
+          "caption": "Description length of each prefix, relative to the single-leaf tree. On tic-tac-toe, pre-pruning would stop after one level, but the minimum is at three."
+        }
+      ],
+      "demo_note": null,
+      "claims": [
+        {
+          "lead": "Result:",
+          "text": "tables with 37 leaves on average, vs 299 for DecisionTable and 103 for J48; significantly smaller than DecisionTable on 11/15 and J48 on 10/15 datasets, the same mean accuracy as DecisionTable (80.6%), and ~12× faster to train than it.",
+          "source": "https://github.com/NecmiKural/oblivious-decision-tables-mdl/blob/1fe348e8eaaf36ac984df1a1235838aa344de02c/README.md"
+        }
+      ]
+    },
+    {
+      "id": "research-writing-samples",
+      "title": "research-writing-samples",
+      "group": "coursework",
+      "label": null,
+      "ref": "4820efb04f3334bef3b4ac281e386c97082f9234",
+      "short": "Literature review, risk assessment and a paper appraisal",
+      "pitch": null,
+      "card": "Three pieces of technical writing on AI systems: a literature review on whether AI coding assistants raise quality-adjusted productivity, a pre-deployment risk assessment for a RAG assistant with a drill-down on indirect prompt injection, and a critical appraisal of the discovery claim of a drug-target interaction model.",
+      "stack": [
+        "Literature review",
+        "Risk assessment",
+        "Critical appraisal"
+      ],
+      "byline": "Coursework, University of Waikato · Technical writing on AI systems · individual",
+      "flags": {
+        "synthetic_data": false,
+        "course": "Technical writing on AI systems",
+        "team_size": null,
+        "role": null
+      },
+      "urls": {
+        "repo": "https://github.com/NecmiKural/research-writing-samples",
+        "release": null,
+        "results": null,
+        "visual": null,
+        "demo": null,
+        "space": null,
+        "extra": []
+      },
+      "visuals": [],
+      "demo_note": null,
+      "claims": []
+    },
+    {
       "id": "m365-copilot-proxy",
-      "title": "m365-copilot-proxy (upstream contributions)",
+      "title": "m365-copilot-proxy (collaborator)",
       "group": "open-source",
       "label": null,
       "ref": null,
-      "short": "Three merged upstream pull requests",
+      "short": "Collaborator on an OpenAI-compatible proxy for M365 Copilot",
       "pitch": null,
-      "card": "Three merged pull requests: Windows agent fixes, pinning each conversation to one backend, and image input.",
+      "card": "Collaborator with write access on a proxy that lets coding agents use an M365 Copilot licence as an OpenAI-compatible backend. My merged pull requests cover Windows agent support, pinning each conversation to one backend, image input, reading every fence shape the models write for tool calls, and keeping sessions that share a first message apart.",
       "stack": [
         "TypeScript"
       ],
@@ -689,6 +816,18 @@
           {
             "label": "#66",
             "url": "https://github.com/cramt/m365-copilot-proxy/pull/66"
+          },
+          {
+            "label": "#71",
+            "url": "https://github.com/cramt/m365-copilot-proxy/pull/71"
+          },
+          {
+            "label": "#113",
+            "url": "https://github.com/cramt/m365-copilot-proxy/pull/113"
+          },
+          {
+            "label": "All merged",
+            "url": "https://github.com/cramt/m365-copilot-proxy/pulls?q=is%3Apr+author%3ANecmiKural+is%3Amerged"
           }
         ]
       },
